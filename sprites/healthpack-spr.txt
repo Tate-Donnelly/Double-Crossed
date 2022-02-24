@@ -1,0 +1,18 @@
+<HEADER>
+frames 2
+width 3
+height 2
+color red
+slowdown 15
+</HEADER>
+<BODY>
+ _ 
+[+]
+end
+ _ 
+[ ]
+end
+</BODY>
+<FOOTER>
+version 1
+</FOOTER>

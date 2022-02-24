@@ -1,0 +1,21 @@
+<HEADER>
+frames 1
+width 64
+height 8
+color yellow
+slowdown 15
+</HEADER>
+<BODY>
+   ___            __   __      _____                        __  
+  / _ \___  __ __/ /  / /__   / ___/______  ___ ___ ___ ___/ /  
+ / // / _ \/ // / _ \/ / -_) / /__/ __/ _ \(_-<(_-</ -_) _  /   
+/____/\___/\_,_/_.__/_/\__/  \___/_/  \___/___/___/\__/\_,_/    
+                                                                
+Controls: WASD moves, Left-Click shoots, Right-Click knocksout  
+                                                                
+            Press space to play, 'q' to quit                    
+end
+</BODY>
+<FOOTER>
+version 1
+</FOOTER>

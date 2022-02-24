@@ -1,0 +1,2 @@
+C:\Users\tedon\source\repos\proj3-SolarRats\x64\Debug\proj3-SolarRats.exe
+C:\Users\tedon\source\repos\proj3-SolarRats\x64\Debug\proj3-SolarRats.pdb

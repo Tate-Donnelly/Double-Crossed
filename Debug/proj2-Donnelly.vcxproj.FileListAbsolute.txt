@@ -1,0 +1,2 @@
+C:\Users\tedon\source\repos\proj2-Donnelly\x64\Debug\proj2-Donnelly.lib
+C:\Users\tedon\source\repos\proj2-Donnelly\x64\Debug\proj2-Donnelly.pdb
