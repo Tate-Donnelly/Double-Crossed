@@ -3,7 +3,7 @@
 #include "ResourceManager.h"
 #include "LogManager.h"
 #include "GameStart.h"
-
+#include "Player.h"
 //function prototypes
 void loadResources(void);
 void populateWorld(void);
@@ -17,8 +17,7 @@ int main() {
 
         loadResources();//Loads the game's resources
         populateWorld();//Populate game world with some objects.
-        
-        
+
         GM.run();
         GM.shutDown();
     }
@@ -34,13 +33,20 @@ void loadResources(void) {
     RM.loadSprite("sprites/gameover-spr.txt", "gameover");
     RM.loadSprite("sprites/gamestart-spr.txt", "gamestart");
     RM.loadSprite("sprites/healthpack-spr.txt", "healthpack");
+    RM.loadSprite("sprites/LevelEnd.txt", "LevelEnd");
+    RM.loadSprite("sprites/one-char-wall-h-spr.txt", "one char wall h");
+    RM.loadSprite("sprites/one-char-wall-v-spr.txt", "one char wall v");
+    RM.loadSprite("sprites/container-wall-h-spr.txt", "container wall h");
+    RM.loadSprite("sprites/container-wall-v-spr.txt", "container wall v");
+    RM.loadSound("sounds/fire.wav", "fire");
+    RM.loadSound("sounds/game-over.wav", "game over");
+    RM.loadMusic("sounds/start-music.wav", "start music");
+  //  RM.loadSprite("sprites/fov-q1-spr.txt", "q1");
 }
 
 //Populate the world with sprites and sounds
 void populateWorld() {
-    RM.loadSound("sounds/fire.wav", "fire");
-    RM.loadSound("sounds/game-over.wav", "game over");
-    RM.loadMusic("sounds/start-music.wav", "start music");
     RM.getMusic("start music")->stop();
-    new GameStart();
+    GameStart* g=new GameStart();
+    
 }

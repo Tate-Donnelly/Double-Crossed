@@ -7,6 +7,7 @@
 #include "LogManager.h"
 #include "ResourceManager.h"
 #include "WorldManager.h"
+#include "LevelManager.h"
 
 GameOver::GameOver() {
     setType("GameOver");
@@ -23,6 +24,7 @@ GameOver::GameOver() {
     //Plays game over sound
     df::Sound* p_sound = RM.getSound("game over");
     p_sound->play(true);
+    levelM.insertProtected(this);
 }
 
 //Handles event
@@ -46,18 +48,14 @@ void GameOver::step() {
 //Resets game for Game Start
 GameOver::~GameOver() {
     //Removes Enemies and ViewObjects
-    df::ObjectList object_list = WM.getAllObjects();
-    df::ObjectListIterator i(&object_list);
+    df::ObjectListIterator i(new df::ObjectList(WM.getAllObjects()));
     for (i.first(); !i.isDone(); i.next()) {
         df::Object* p_o = i.currentObject();
-        if (p_o->getType() == "Enemy" || p_o->getType() == "ViewObject") {
+        if (p_o != this) {
             WM.markForDelete(p_o);
         }
-        if (p_o->getType() == "GameStart") {
-            dynamic_cast <GameStart*> (p_o)->playMusic();
-            setColor(df::BLACK);
-        }
     }
+    new GameStart;
 }
 
 //Draws game over screen

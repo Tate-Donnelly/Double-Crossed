@@ -152,31 +152,31 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="EventFOV.cpp" />
     <ClCompile Include="EventHealthPack.cpp" />
     <ClCompile Include="EventHit.cpp" />
-    <ClCompile Include="FOV.cpp" />
+    <ClCompile Include="EventLevel.cpp" />
+    <ClCompile Include="EventStart.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameStart.cpp" />
     <ClCompile Include="HealthPack.cpp" />
-    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelEnd.cpp" />
+    <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Reticle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="EventFOV.h" />
     <ClInclude Include="EventHealthPack.h" />
     <ClInclude Include="EventHit.h" />
-    <ClInclude Include="FOV.h" />
+    <ClInclude Include="EventLevel.h" />
+    <ClInclude Include="EventStart.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameStart.h" />
     <ClInclude Include="HealthPack.h" />
-    <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelEnd.h" />
+    <ClInclude Include="LevelManager.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Reticle.h" />

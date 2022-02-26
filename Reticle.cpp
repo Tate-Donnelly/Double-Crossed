@@ -2,8 +2,10 @@
 #include "EventMouse.h"
 #include "DisplayManager.h"
 #include "WorldManager.h"
+#include "LevelManager.h"
 
 Reticle::Reticle() {
+    levelM.insertProtected(this);
     setType("Reticle");
     setSolidness(df::SPECTRAL);
     setAltitude(3);

@@ -2,7 +2,7 @@
 #include <ViewObject.h>
 #include "Music.h"
 class GameStart :
-    public df::ViewObject
+    public df::Object
 {
 
 private:
