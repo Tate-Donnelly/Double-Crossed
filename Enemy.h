@@ -3,7 +3,7 @@
 
 #include "Object.h"
 #include "FOV.h"
-#include "Vector.h"
+#include "Player.h"
 
 class FOV;
 
@@ -35,6 +35,7 @@ private:
     //df::Vector right;
     //Moves Enemy
     void move(float x, float y);
+    bool canShoot;
 public:
     Enemy(df::Vector position, bool direction);
     Enemy();
@@ -45,6 +46,8 @@ public:
     void step();
     void setFOV(FOV* fov);
     FOV* getFOV();
+    void setCanShoot(bool shoot = true);
+    bool CanShoot() const;
 };
 
 #endif //__ENEMY_H__

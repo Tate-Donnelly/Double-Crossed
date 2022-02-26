@@ -54,6 +54,7 @@ Enemy::Enemy(df::Vector position, bool direction)
 	}
 	d_x = 0;
 	d_y = 0;
+	myFOV = new FOV(this);
 }
 
 Enemy::~Enemy()
@@ -63,9 +64,6 @@ Enemy::~Enemy()
 
 int Enemy::eventHandler(const df::Event* p_e)
 {
-	if (p_e->getType() == HIT_EVENT) {
-		return 1;
-	}
 	if (p_e->getType() == df::STEP_EVENT) {
 		step();
 		return 1;
@@ -111,19 +109,20 @@ void Enemy::move(float x, float y)
 	setVelocity(new_pos);
 	WM.moveObject(this, new_pos);
 	WM.moveObject(myFOV, new_pos2);
-	LM.writeLog("Enemy: Old Position (%f,%f), New Position (%f,%f)", getPosition().getX(), getPosition().getY(), new_pos.getX(), new_pos.getY());
+	LM.writeLog(0,"Enemy: Old Position (%f,%f), New Position (%f,%f)", getPosition().getX(), getPosition().getY(), new_pos.getX(), new_pos.getY());
 }
 
 int Enemy::shoot()
 {
+	//Time to fire
+	if (fire_countdown > 0) {
+		return 1;
+	}
+	fire_countdown = fire_slowdown;
 	//Fire sound
 	df::Sound* p_sound = RM.getSound("fire");
 	p_sound->play(false);
-	// Compute normalized vector to position, then scale by speed 
-	// Fire Bullet towards target.
 	df::Vector v = getPosition();
-	printf("Vector: x = %f, y = %f", v.getX(), v.getY());
-	v.setY(0);
 	if (facingLeft) {
 		v.setX(0 - v.getX());
 	}
@@ -132,8 +131,9 @@ int Enemy::shoot()
 	}
 	v.normalize();
 	v.scale(1);
-	Bullet* p = new Bullet(df::Vector(getPosition().getX(), getPosition().getY() - 1.25), getId());
+	Bullet* p = new Bullet(getPosition(), getId());
 	p->setVelocity(v);
+
 	return 1;
 }
 

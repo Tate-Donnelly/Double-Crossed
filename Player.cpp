@@ -67,6 +67,9 @@ Player::Player() {
 	levelM.insertProtected(p_vo);
 	levelM.insertProtected(p_vo2);
 	levelM.insertProtected(p_vo3);
+
+	target = NULL;
+	sneakAttack = false;
 }
 Player::~Player() {
 	new GameOver;
@@ -86,6 +89,20 @@ int Player::eventHandler(const df::Event* p_e) {
 	}
 	if (p_e->getType() == df::COLLISION_EVENT) {
 		const df::EventCollision* p_collision_event = dynamic_cast <df::EventCollision const*> (p_e);
+		bool enemy = ((p_collision_event->getObject1()->getType() == "Enemy") || (p_collision_event->getObject2()->getType() == "Enemy"));
+		bool player = ((p_collision_event->getObject1()->getType() == "Player") || (p_collision_event->getObject2()->getType() == "Player"));
+		if (enemy && player) {
+			if (p_collision_event->getObject1()->getType() == "Enemy") {
+				target=(Enemy*) p_collision_event->getObject1();
+			}
+			else {
+				target = (Enemy*)p_collision_event->getObject2();
+			}
+			sneakAttack = true;
+		}
+		else {
+			sneakAttack = false;
+		}
 		return 1;
 	}
 	if (p_e->getType() == HIT_EVENT) {
@@ -178,12 +195,11 @@ int Player::mouse(const df::EventMouse* mouse) {
 			return shoot(mouse);
 		}
 		else {
-			//Sneak Attack
-			return 0;
+			if (sneakAttack) {
+
+			}
+			return 1;
 		}
-	}
-	else if (mouse->getMouseButton() == df::Mouse::RIGHT) {
-		return 1;
 	}
 	return 0;
 }

@@ -1,6 +1,7 @@
 #ifndef __PLAYER_H__
 #define __PLAYER_H__
 #include "Object.h"
+#include "Enemy.h"
 #include "EventMouse.h"
 #include "EventKeyboard.h"
 class Player :
@@ -16,6 +17,8 @@ class Player :
         int fire_countdown;
         int fire_slowdown;
         bool active;
+        bool sneakAttack;
+        Object *target;
         //Moves Player
         void move(int x, int y);
         //Player shoots bullet

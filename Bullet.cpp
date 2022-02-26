@@ -1,6 +1,7 @@
 #include "Bullet.h"
 #include "Saucer.h"
 #include "EventOut.h"
+#include "EventHit.h"
 #include "EventView.h"
 #include "EventCollision.h"
 #include "GameManager.h"
@@ -47,11 +48,15 @@ void Bullet::hit(const df::EventCollision* p_collision_event) {
     bool enemy = ((p_collision_event->getObject1()->getType() == "Enemy") || (p_collision_event->getObject2()->getType() == "Enemy"));
     bool player = ((p_collision_event->getObject1()->getType() == "Player") || (p_collision_event->getObject2()->getType() == "Player"));
     if ((bullet && enemy)) {
-        WM.markForDelete(p_collision_event->getObject1());
-        WM.markForDelete(p_collision_event->getObject2());
+        if ((fromID != p_collision_event->getObject1()->getId()) && (fromID != p_collision_event->getObject2()->getId())) {
+            WM.markForDelete(p_collision_event->getObject1());
+            WM.markForDelete(p_collision_event->getObject2());
+        }
     }
     else if (bullet && player) {
         if ((fromID != p_collision_event->getObject1()->getId()) && (fromID != p_collision_event->getObject2()->getId())) {
+            EventHit ev;
+            WM.onEvent(&ev);
             if ((p_collision_event->getObject1()->getType() == "Bullet")) {
                 WM.markForDelete(p_collision_event->getObject1());
             }

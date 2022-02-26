@@ -11,6 +11,7 @@ class FOV : public df::Object {
 public: 
 	Enemy* myEnemy;
 	FOV(df::Vector e_pos, Enemy* ene);
+	FOV(Enemy* ene);
 	FOV();
 	~FOV();
 	int eventHandler(const df::Event* p_e);

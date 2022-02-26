@@ -1,20 +1,20 @@
 #include "FOV.h"
 #include "EventFOV.h"
+#include "EventCollision.h"
 #include "WorldManager.h"
 
-FOV::FOV(df::Vector e_pos, Enemy* ene)
+FOV::FOV(Enemy* ene)
 {
 	setAltitude(3);
 	myEnemy = ene;
 	setType("FOV");
 	setSprite("fov");
 	setSolidness(df::SOFT);
-	setPosition(e_pos);
+	setPosition(ene->getPosition());
 }
 
 FOV::FOV() {
-	myEnemy = new Enemy;
-	FOV(df::Vector(50, 10), myEnemy);
+	FOV(new Enemy);
 }
 
 FOV::~FOV()
@@ -23,16 +23,17 @@ FOV::~FOV()
 }
 
 int FOV::eventHandler(const df::Event* p_e) {
-	if (p_e->getType() == FOV_EVENT) {
-		myEnemy->shoot();
-		return 1;
-	}
-	if (p_e->getType() == df::COLLISION_EVENT) {
+	if ((p_e->getType() == df::COLLISION_EVENT)) {
 		const df::EventCollision* p_collision_event = dynamic_cast <const df::EventCollision*> (p_e);
 		bool FOV = ((p_collision_event->getObject1()->getType() == "FOV") || (p_collision_event->getObject2()->getType() == "FOV"));
 		bool player = ((p_collision_event->getObject1()->getType() == "Player") || (p_collision_event->getObject2()->getType() == "Player"));
 		if ((FOV && player)) {
-			myEnemy->shoot();
+			if ((p_collision_event->getObject1()->getType() == "Player")) {
+				myEnemy->shoot();
+			}
+			else {
+				myEnemy->shoot();
+			}
 			return 1;
 		}
 	}

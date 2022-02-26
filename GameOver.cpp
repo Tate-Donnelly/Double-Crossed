@@ -20,10 +20,8 @@ GameOver::GameOver() {
     }
     setColor(df::YELLOW);
     //Sets location
-    setLocation(df::CENTER_CENTER);
-    //Plays game over sound
-    df::Sound* p_sound = RM.getSound("game over");
-    p_sound->play(true);
+    df::Vector p(WM.getBoundary().getHorizontal() - 6, WM.getBoundary().getVertical() / 2 + 3);
+    setPosition(p);
     levelM.insertProtected(this);
 }
 

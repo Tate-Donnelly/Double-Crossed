@@ -30,14 +30,12 @@ GameStart::GameStart() {
 
 //Play start music
 void GameStart::playMusic() {
-    //p_music->play();
+    p_music->play();
 }
 
 //Starts the game
 void GameStart::start() {
     levelM.startUp();
-   // new Enemy;
-    //new HealthPack(df::Vector(30, 5));
     p_music->pause();
     // When game starts, paint it black.
     getAnimation().getSprite()->setColor(df::BLACK);
