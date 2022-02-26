@@ -9,40 +9,25 @@
 #include "Sound.h"
 #include "Bullet.h"
 
-Enemy::Enemy(df::Vector position, bool direction)
+Enemy::Enemy()
 {
-	setType("Enemy");
-	setAltitude(4);
-	setSolidness(df::HARD);
-	setSpeed(1);
-	setPosition(position);
-	facingLeft = direction;
-	if (facingLeft) {
-		setSprite("playerL");
-		LM.writeLog("the sprite loaded");
-	}
-	else {
-		setSprite("playerR");
-		LM.writeLog("the sprite loaded");
-	}
-	draw();
-	WM.insertObject(this);
+	Enemy(df::Vector(70, 40), true);
 }
 
-Enemy::Enemy()
+Enemy::Enemy(df::Vector position, bool direction)
 {
 	setType("Enemy");
 	setAltitude(3);
 	setSolidness(df::HARD);
 	setSpeed(1);
-	setPosition(df::Vector(70, 40));
-	facingLeft = true;
+	setPosition(position);
+	facingLeft = direction;
 	if (facingLeft) {
-		setSprite("playerL");
+		setSprite("enemyL");
 		LM.writeLog("the sprite loaded");
 	}
 	else {
-		setSprite("playerR");
+		setSprite("enemyR");
 		LM.writeLog("the sprite loaded");
 	}
 }
@@ -54,11 +39,9 @@ Enemy::~Enemy()
 int Enemy::eventHandler(const df::Event* p_e)
 {
 	if (p_e->getType() == HIT_EVENT) {
-		WM.onEvent(p_e);
 		return 1;
 	}
 	if (p_e->getType() == FOV_EVENT) {
-		WM.onEvent(p_e);
 		shoot();
 		return 1;
 	}
@@ -69,6 +52,7 @@ void Enemy::move(int x, int y)
 {
 	//Move if in window
 	df::Vector new_pos(getPosition().getX() + x, getPosition().getY() + y);
+	setVelocity(new_pos);
 	WM.moveObject(this, new_pos);
 	LM.writeLog("Enemy: Old Position (%f,%f), New Position (%f,%f)", getPosition().getX(), getPosition().getY(), new_pos.getX(), new_pos.getY());
 }
