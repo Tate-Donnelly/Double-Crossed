@@ -58,11 +58,16 @@ int LevelManager::loadLevel(int levelID) {
 	}
 
 	setLevelIndex(levelID);
+	Enemy* myEnemy;
+	FOV* myFOV;
+	df::Vector myVector(53.0, 13.0);
 	switch (levelID) {
 	case 0:
 		new LevelEnd(df::Vector(30, 13));
 		new HealthPack(df::Vector(30, 5));
-		new Enemy(df::Vector(50,13),true);
+		myEnemy = new Enemy(myVector,true);
+		myFOV = new FOV(df::Vector(50, 13), myEnemy);
+		myEnemy->setFOV(myFOV);
 		break;
 	case 1:
 		new LevelEnd(df::Vector(50, 13));

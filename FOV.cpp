@@ -1,23 +1,53 @@
 #include "FOV.h"
+#include "EventFOV.h"
+#include "WorldManager.h"
 
-FOV::FOV()
+FOV::FOV(df::Vector e_pos, Enemy* ene)
 {
+	setAltitude(3);
+	myEnemy = ene;
 	setType("FOV");
+	setSprite("fov");
 	setSolidness(df::SOFT);
+	setPosition(e_pos);
 }
 
-FOV::FOV(float x_length, float y_length)
-{
-	setType("FOV");
-	setSolidness(df::SOFT);
-	setVisionX(x_length);
-	setVisionY(y_length);
+FOV::FOV() {
+	myEnemy = new Enemy;
+	FOV(df::Vector(50, 10), myEnemy);
 }
 
 FOV::~FOV()
 {
+	WM.removeObject(this);
 }
 
+int FOV::eventHandler(const df::Event* p_e) {
+	if (p_e->getType() == FOV_EVENT) {
+		myEnemy->shoot();
+		return 1;
+	}
+	if (p_e->getType() == df::COLLISION_EVENT) {
+		const df::EventCollision* p_collision_event = dynamic_cast <const df::EventCollision*> (p_e);
+		bool FOV = ((p_collision_event->getObject1()->getType() == "FOV") || (p_collision_event->getObject2()->getType() == "FOV"));
+		bool player = ((p_collision_event->getObject1()->getType() == "Player") || (p_collision_event->getObject2()->getType() == "Player"));
+		if ((FOV && player)) {
+			myEnemy->shoot();
+			return 1;
+		}
+	}
+	return 0;//Ignores Event
+}
+
+void FOV::move(float x, float y)
+{
+	//Move if in window
+	df::Vector new_pos(getPosition().getX() + x, getPosition().getY() + y);
+	setVelocity(new_pos);
+	WM.moveObject(this, new_pos);
+}
+
+/*
 float FOV::getVisionX()
 {
 	return vision_x;
@@ -37,3 +67,4 @@ void FOV::setVisionY(float new_vision_y)
 {
 	vision_y = new_vision_y;
 }
+*/
