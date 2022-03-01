@@ -6,10 +6,16 @@
 #include "Player.h"
 
 class FOV;
+enum MovementPatern {
+    backAndFourth,
+    diamond,
+    hugObstacle,
+};
 
 class Enemy :
     public df::Object
 {
+
 private:
     int bullets;
     int move_countdown;
@@ -29,15 +35,17 @@ private:
     bool facingLeft;
     FOV* myFOV;
     df::Vector FOVector;
+    MovementPatern movementPatern;
     //df::Vector top;
     //df::Vector bottom;
     //df::Vector left;
     //df::Vector right;
     //Moves Enemy
-    void move(float x, float y);
+    void move();
     bool canShoot;
+    bool bounce;
 public:
-    Enemy(df::Vector position, bool direction);
+    Enemy(df::Vector position, bool direction, MovementPatern mp);
     Enemy();
     ~Enemy();
     int eventHandler(const df::Event* p_e);
@@ -48,6 +56,11 @@ public:
     FOV* getFOV();
     void setCanShoot(bool shoot = true);
     bool CanShoot() const;
+    void setMovement(MovementPatern mp);
+    MovementPatern getMovement() const;
+    void movementBackAndFourth();
+    void movementDiamond();
+    void movementHugObstacle();
 };
 
 #endif //__ENEMY_H__

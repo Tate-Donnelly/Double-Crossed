@@ -22,7 +22,11 @@ LevelManager& LevelManager::getInstance() {
 	return levelManager;
 }
 int LevelManager::startUp() {
-	new Player;
+	//Player* p=new Player;
+
+	/*if (0 == WM.setViewFollowing(p)) {
+		LM.writeLog("NULL");
+	}*/
 	loadLevel(0);
 	df::Manager::startUp();
 	return 0;
@@ -41,6 +45,8 @@ void LevelManager::setLevelIndex(int level) {
 int LevelManager::getLevelIndex()  const {
 	return level_index;
 }
+
+
 
 //Loads in selected level
 int LevelManager::loadLevel(int levelID) {
@@ -63,7 +69,7 @@ int LevelManager::loadLevel(int levelID) {
 		drawContainer();
 		new LevelEnd(df::Vector(30, 13));
 		new HealthPack(df::Vector(30, 5));
-		new Enemy(df::Vector(50, 13), true);
+		new Enemy(df::Vector(50, 13), true, backAndFourth);
 		break;
 	case 1:
 		new LevelEnd(df::Vector(50, 13));
@@ -93,8 +99,9 @@ void LevelManager::resetLevel() {
 
 
 void LevelManager::drawContainer() {
-	new Obstacle(df::Vector(78, 0), df::BLACK, "container wall h");
-	new Obstacle(df::Vector(78, 27), df::BLACK, "container wall h");
-	new Obstacle(df::Vector(7, 23.5), df::BLACK, "container wall v");
-	new Obstacle(df::Vector(82, 23.5), df::BLACK, "container wall v");
+	Obstacle* o=new Obstacle(df::Vector(40, 0), df::YELLOW, "container wall h");
+	LM.writeLog("(%f,%f)", o->getBox().getCorner().getX(), o->getBox().getCorner().getY());
+	new Obstacle(df::Vector(40, 24), df::YELLOW, "container wall h");
+	new Obstacle(df::Vector(0, 12), df::YELLOW, "container wall v");
+	new Obstacle(df::Vector(80, 12), df::YELLOW, "container wall v");
 }

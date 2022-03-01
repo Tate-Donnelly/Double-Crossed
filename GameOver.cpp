@@ -20,7 +20,7 @@ GameOver::GameOver() {
     }
     setColor(df::YELLOW);
     //Sets location
-    df::Vector p(WM.getBoundary().getHorizontal() - 6, WM.getBoundary().getVertical() / 2 + 3);
+    df::Vector p(WM.getBoundary().getHorizontal() / 2, WM.getBoundary().getVertical() / 2);
     setPosition(p);
     levelM.insertProtected(this);
 }

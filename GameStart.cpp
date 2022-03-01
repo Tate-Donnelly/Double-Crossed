@@ -19,7 +19,7 @@ GameStart::GameStart() {
     setSprite("gamestart");
     setSolidness(df::SPECTRAL);
     //Put in center of screen
-    df::Vector p(WM.getBoundary().getHorizontal() -6, WM.getBoundary().getVertical()/2 + 3);
+    df::Vector p(WM.getBoundary().getHorizontal()/2, WM.getBoundary().getVertical()/2);
     setPosition(p);
     //Plays start music
     p_music = RM.getMusic("start music");

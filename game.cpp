@@ -16,8 +16,9 @@ int main() {
         LM.setFlush(true);//Set flush of logfile during development
 
         loadResources();//Loads the game's resources
+        new Player;
         populateWorld();//Populate game world with some objects.
-
+        
         GM.run();
         GM.shutDown();
     }
@@ -38,6 +39,7 @@ void loadResources(void) {
     RM.loadSprite("sprites/one-char-wall-v-spr.txt", "one char wall v");
     RM.loadSprite("sprites/container-wall-h-spr.txt", "container wall h");
     RM.loadSprite("sprites/container-wall-v-spr.txt", "container wall v");
+    RM.loadSprite("sprites/fov-spr.txt", "fov");
     RM.loadSound("sounds/fire.wav", "fire");
     RM.loadSound("sounds/game-over.wav", "game over");
     RM.loadMusic("sounds/start-music.wav", "start music");

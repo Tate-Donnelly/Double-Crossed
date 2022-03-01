@@ -20,7 +20,7 @@ class Player :
         bool sneakAttack;
         Object *target;
         //Moves Player
-        void move(int x, int y);
+        void move(float x, float y);
         //Player shoots bullet
         int shoot(const df::EventMouse* mouse);
         //Keyboard event

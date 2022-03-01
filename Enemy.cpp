@@ -12,20 +12,22 @@
 
 Enemy::Enemy()
 {
-	Enemy(df::Vector(70, 40), true);
+	Enemy(df::Vector(70, 40), true, backAndFourth);
 }
 
-Enemy::Enemy(df::Vector position, bool direction)
+Enemy::Enemy(df::Vector position, bool direction, MovementPatern mp)
 {
 	setType("Enemy");
 	setAltitude(3);
 	setSolidness(df::HARD);
 	setSpeed(1);
+	bounce = false;
 	move_slowdown = 100;
 	move_countdown;
 	fire_slowdown = 100;
 	fire_countdown;
 	setPosition(position);
+	setMovement(mp);
 	/*
 	right = position;
 	left = df::Vector(position.getX() - 20, position.getY());
@@ -59,7 +61,7 @@ Enemy::Enemy(df::Vector position, bool direction)
 
 Enemy::~Enemy()
 {
-
+	WM.markForDelete(myFOV);
 }
 
 int Enemy::eventHandler(const df::Event* p_e)
@@ -68,48 +70,32 @@ int Enemy::eventHandler(const df::Event* p_e)
 		step();
 		return 1;
 	}
+	if (p_e->getType() == df::COLLISION_EVENT) {
+		const df::EventCollision* p_collision_event = dynamic_cast <df::EventCollision const*> (p_e);
+		bool enemy = ((p_collision_event->getObject1()->getType() == "Enemy") || (p_collision_event->getObject2()->getType() == "Enemy"));
+		bool obstacle = ((p_collision_event->getObject1()->getType() == "Obstacle") || (p_collision_event->getObject2()->getType() == "Obstacle"));
+		if (enemy && obstacle && bounce) {
+			setVelocity(df::Vector((-1) * getVelocity().getX(), getVelocity().getY()));
+		}
+
+	}
 	return 0;
 
 }
 
-void Enemy::move(float x, float y)
+void Enemy::move()
 {
-	df::Vector v = getPosition();
-	int a = v.getX(); //The reason this is here is to truncate the values for comparison
-	int b = v.getY();
-	//Move if in window
-	if ((a == right_x) && (b == right_y)) {
-		d_x = -0.1;
-		d_y = 0.1;
-		setSprite("enemyL");
-		facingLeft = true;
+	switch (getMovement()) {
+	case backAndFourth:
+		movementBackAndFourth();
+		break;
+	case diamond:
+		movementDiamond();
+		break;
+	case hugObstacle:
+		movementHugObstacle();
+		break;
 	}
-	if ((a == bot_x) && (b == bot_y)) {
-		d_x = -0.1;
-		d_y = -0.1;
-	}
-	if ((a == left_x) && (b == left_y)) {
-		d_x = 0.1;
-		d_y = -0.1;
-		setSprite("enemyR");
-		facingLeft = false;
-	}
-	if ((a == top_x) && (b == top_y)) {
-		d_x = 0.1;
-		d_y = 0.1;
-	}
-	df::Vector new_pos(getPosition().getX() + d_x, getPosition().getY() + d_y);
-	df::Vector new_pos2;
-	if (facingLeft) {
-		new_pos2 = df::Vector(getPosition().getX() + d_x - 3, getPosition().getY() + d_y);
-	}
-	else {
-		new_pos2 = df::Vector (getPosition().getX() + d_x + 10, getPosition().getY() + d_y);
-	}
-	setVelocity(new_pos);
-	WM.moveObject(this, new_pos);
-	WM.moveObject(myFOV, new_pos2);
-	LM.writeLog(0,"Enemy: Old Position (%f,%f), New Position (%f,%f)", getPosition().getX(), getPosition().getY(), new_pos.getX(), new_pos.getY());
 }
 
 int Enemy::shoot()
@@ -143,8 +129,8 @@ void Enemy::step() {
 	if (move_countdown < 0)
 		move_countdown = 0;
 	if (move_countdown == 0) {
-		move(-0.1, 0);
-		getFOV()->move(-0.1, 0);
+		move();
+		getFOV()->move(-.5,0);
 	}
 	// NOTE - in step()
 	// Fire countdown.
@@ -161,4 +147,65 @@ void Enemy::setFOV(FOV* fov)
 FOV* Enemy::getFOV()
 {
 	return myFOV;
+}
+
+void Enemy::setMovement(MovementPatern mp) {
+	movementPatern = mp;
+}
+MovementPatern Enemy::getMovement() const {
+	return movementPatern;
+}
+void Enemy::movementBackAndFourth() {
+	bounce = true;
+	setVelocity(getDirection());
+	df::Vector new_pos2;
+	if (facingLeft) {
+		new_pos2 = df::Vector(getPosition().getX() + d_x - 10, getPosition().getY() + d_y);
+	}
+	else {
+		new_pos2 = df::Vector(getPosition().getX() + d_x + 10, getPosition().getY() + d_y);
+	}
+	WM.moveObject(this, getPosition());
+	WM.moveObject(myFOV, new_pos2);
+}
+void Enemy::movementDiamond() {
+	df::Vector v = getPosition();
+	int a = v.getX(); //The reason this is here is to truncate the values for comparison
+	int b = v.getY();
+	//Move if in window
+	if ((a == right_x) && (b == right_y)) {
+		d_x = -0.1;
+		d_y = 0.1;
+		setSprite("enemyL");
+		facingLeft = true;
+	}
+	if ((a == bot_x) && (b == bot_y)) {
+		d_x = -0.1;
+		d_y = -0.1;
+	}
+	if ((a == left_x) && (b == left_y)) {
+		d_x = 0.1;
+		d_y = -0.1;
+		setSprite("enemyR");
+		facingLeft = false;
+	}
+	if ((a == top_x) && (b == top_y)) {
+		d_x = 0.1;
+		d_y = 0.1;
+	}
+	df::Vector new_pos(getPosition().getX() + d_x, getPosition().getY() + d_y);
+	df::Vector new_pos2;
+	if (facingLeft) {
+		new_pos2 = df::Vector(getPosition().getX() + d_x - 3, getPosition().getY() + d_y);
+	}
+	else {
+		new_pos2 = df::Vector(getPosition().getX() + d_x + 10, getPosition().getY() + d_y);
+	}
+	setVelocity(new_pos);
+	WM.moveObject(this, new_pos);
+	WM.moveObject(myFOV, new_pos2);
+	LM.writeLog(0, "Enemy: Old Position (%f,%f), New Position (%f,%f)", getPosition().getX(), getPosition().getY(), new_pos.getX(), new_pos.getY());
+}
+void Enemy::movementHugObstacle() {
+
 }

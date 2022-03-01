@@ -35,6 +35,11 @@ Player::Player() {
 	bullets = 3;
 	lives = 3;
 
+
+	if (-1 == WM.setViewFollowing(this)) {
+		LM.writeLog("HERE");
+	}
+
 	//Displays available bullets
 	df::ViewObject* p_vo = new df::ViewObject;
 	p_vo->setLocation(df::TOP_RIGHT);
@@ -130,15 +135,20 @@ int Player::eventHandler(const df::Event* p_e) {
 }
 
 //Moves Player up and down
-void Player::move(int x, int y) {
+void Player::move(float x, float y) {
 	if ((move_countdown < 0)||!active) {
 		return;
 	}
 	move_countdown = move_slowdown;
 	//Move if in window
-
 	df::Vector new_pos(getPosition().getX() + x, getPosition().getY() + y);
+
 	WM.moveObject(this, new_pos);
+	df::Box new_view = WM.getView();
+	df::Vector corner = new_view.getCorner();
+	corner.setXY(corner.getX()+x,corner.getY()+y);
+	new_view.setCorner(corner);
+	WM.setView(new_view);
 	LM.writeLog(0,"Old Position (%f,%f), New Position (%f,%f)", getPosition().getX(), getPosition().getY(), new_pos.getX(), new_pos.getY());
 }
 
