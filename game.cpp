@@ -15,10 +15,18 @@ int main() {
     else {
         LM.setFlush(true);//Set flush of logfile during development
 
+
+
         loadResources();//Loads the game's resources
-        new Player;
+        WM.setBoundary(df::Box(df::Vector(0, 0), 240, 30));
+        WM.setView(df::Box(df::Vector(0, 0), 80, 24));
+        WM.setViewPosition(df::Vector(40, 12));
+        p.setPosition(df::Vector(40, 12));
+        p.setSprite("");
+        //Player* p = new Player;
         populateWorld();//Populate game world with some objects.
-        
+     
+
         GM.run();
         GM.shutDown();
     }
@@ -39,6 +47,9 @@ void loadResources(void) {
     RM.loadSprite("sprites/one-char-wall-v-spr.txt", "one char wall v");
     RM.loadSprite("sprites/container-wall-h-spr.txt", "container wall h");
     RM.loadSprite("sprites/container-wall-v-spr.txt", "container wall v");
+    RM.loadSprite("sprites/box-spr.txt", "box");
+    RM.loadSprite("sprites/container-barrier-wall-h-spr.txt", "container barrier wall h");
+    RM.loadSprite("sprites/container-barrier-wall-v-spr.txt", "container barrier wall v");
     RM.loadSprite("sprites/fov-spr.txt", "fov");
     RM.loadSound("sounds/fire.wav", "fire");
     RM.loadSound("sounds/game-over.wav", "game over");

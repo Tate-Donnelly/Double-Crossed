@@ -14,13 +14,14 @@
 #include <SFML/Graphics.hpp>
 
 GameStart::GameStart() {
+    LM.writeLog("GameStart");
     setType("GameStart");
     //Link to "message" sprite
     setSprite("gamestart");
     setSolidness(df::SPECTRAL);
     //Put in center of screen
-    df::Vector p(WM.getBoundary().getHorizontal()/2, WM.getBoundary().getVertical()/2);
-    setPosition(p);
+    df::Vector pos(40, 12);
+    setPosition(pos);
     //Plays start music
     p_music = RM.getMusic("start music");
     playMusic();

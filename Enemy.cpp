@@ -12,7 +12,7 @@
 
 Enemy::Enemy()
 {
-	Enemy(df::Vector(70, 40), true, backAndFourth);
+	Enemy(df::Vector(70, 40), true, backAndForth);
 }
 
 Enemy::Enemy(df::Vector position, bool direction, MovementPatern mp)
@@ -28,6 +28,10 @@ Enemy::Enemy(df::Vector position, bool direction, MovementPatern mp)
 	fire_countdown;
 	setPosition(position);
 	setMovement(mp);
+	bottom_y = getPosition().getY(); //start at the bottom right
+	right_x = getPosition().getX(); //start at the bottom right
+	top_y = bottom_y - 6;
+	left_x = right_x - 20;
 	/*
 	right = position;
 	left = df::Vector(position.getX() - 20, position.getY());
@@ -35,14 +39,6 @@ Enemy::Enemy(df::Vector position, bool direction, MovementPatern mp)
 	top = df::Vector(position.getX() - 10, position.getY() - 10);
 	printf("Vector: x = %f, y = %f", position.getX(), position.getY());
 	*/
-	right_x = position.getX();
-	right_y = position.getY();
-	left_x = right_x - 20;
-	left_y = right_y;
-	top_x = right_x - 10;
-	top_y = right_y - 10;
-	bot_x = top_x;
-	bot_y = right_y + 10;
 	fire_countdown = 5;
 	fire_slowdown;
 	facingLeft = direction;
@@ -86,14 +82,17 @@ int Enemy::eventHandler(const df::Event* p_e)
 void Enemy::move()
 {
 	switch (getMovement()) {
-	case backAndFourth:
-		movementBackAndFourth();
+	case backAndForth:
+		movementBackAndForth();
 		break;
-	case diamond:
-		movementDiamond();
-		break;
+		//case diamond:
+			//movementDiamond();
+			//break;
 	case hugObstacle:
 		movementHugObstacle();
+		break;
+	case square:
+		moveSquare();
 		break;
 	}
 }
@@ -109,6 +108,7 @@ int Enemy::shoot()
 	df::Sound* p_sound = RM.getSound("fire");
 	p_sound->play(false);
 	df::Vector v = getPosition();
+	v.setY(0);
 	if (facingLeft) {
 		v.setX(0 - v.getX());
 	}
@@ -117,8 +117,8 @@ int Enemy::shoot()
 	}
 	v.normalize();
 	v.scale(1);
-	Bullet* p = new Bullet(getPosition(), getId());
-	p->setVelocity(v);
+	Bullet* pos = new Bullet(getPosition(), getId());
+	pos->setVelocity(v);
 
 	return 1;
 }
@@ -130,7 +130,7 @@ void Enemy::step() {
 		move_countdown = 0;
 	if (move_countdown == 0) {
 		move();
-		getFOV()->move(-.5,0);
+		getFOV()->move(-.5, 0);
 	}
 	// NOTE - in step()
 	// Fire countdown.
@@ -150,24 +150,80 @@ FOV* Enemy::getFOV()
 }
 
 void Enemy::setMovement(MovementPatern mp) {
-	movementPatern = mp;
+	movementPattern = mp;
 }
 MovementPatern Enemy::getMovement() const {
-	return movementPatern;
+	return movementPattern;
 }
-void Enemy::movementBackAndFourth() {
+void Enemy::movementBackAndForth() {
 	bounce = true;
+	float x = getPosition().getX();
+	float y = getPosition().getY();
 	setVelocity(getDirection());
 	df::Vector new_pos2;
+	if (x < 11 && facingLeft == true) {
+		x = 0;
+		setSprite("enemyR");
+		facingLeft = false;
+	}
+	if (x > 69 && facingLeft == false) {
+		x = 80;
+		setSprite("enemyL");
+		facingLeft = true;
+	}
 	if (facingLeft) {
-		new_pos2 = df::Vector(getPosition().getX() + d_x - 10, getPosition().getY() + d_y);
+		d_x = -0.25;
+		setPosition(df::Vector(x + d_x, y));
+		new_pos2 = df::Vector(x + d_x - 6, y);
 	}
 	else {
-		new_pos2 = df::Vector(getPosition().getX() + d_x + 10, getPosition().getY() + d_y);
+		d_x = 0.25;
+		setPosition(df::Vector(x + d_x, y));
+		new_pos2 = df::Vector(x + d_x + 7, y);
 	}
 	WM.moveObject(this, getPosition());
 	WM.moveObject(myFOV, new_pos2);
 }
+void Enemy::moveSquare() {
+	df::Vector v = getPosition();
+	float a = v.getX(); //The reason this is here is to truncate the values for comparison
+	float b = v.getY();
+	//Move if in window
+	if (a >= right_x && b >= bottom_y) { //bottom right
+		d_x = -0.5;
+		d_y = 0;
+		setSprite("enemyL");
+		facingLeft = true;
+	}
+	if (a <= left_x && b >= bottom_y) { //bottom left
+		d_x = 0;
+		d_y = -0.2;
+	}
+	if (a <= left_x && b <= top_y) {//top left
+		d_x = 0.5;
+		d_y = 0;
+		setSprite("enemyR");
+		facingLeft = false;
+	}
+	if (a >= right_x && b <= top_y) {//top right
+		d_x = 0;
+		d_y = 0.2;
+	}
+	df::Vector new_pos(getPosition().getX() + d_x, getPosition().getY() + d_y);
+	df::Vector new_pos2;
+	if (facingLeft) {
+		new_pos2 = df::Vector(getPosition().getX() + d_x - 6, getPosition().getY() + d_y);
+	}
+	else {
+		new_pos2 = df::Vector(getPosition().getX() + d_x + 7, getPosition().getY() + d_y);
+	}
+	setVelocity(new_pos);
+	WM.moveObject(this, new_pos);
+	WM.moveObject(myFOV, new_pos2);
+	LM.writeLog(0, "Enemy: Old Position (%f,%f), New Position (%f,%f)", getPosition().getX(), getPosition().getY(), new_pos.getX(), new_pos.getY());
+}
+
+/*
 void Enemy::movementDiamond() {
 	df::Vector v = getPosition();
 	int a = v.getX(); //The reason this is here is to truncate the values for comparison
@@ -206,6 +262,7 @@ void Enemy::movementDiamond() {
 	WM.moveObject(myFOV, new_pos2);
 	LM.writeLog(0, "Enemy: Old Position (%f,%f), New Position (%f,%f)", getPosition().getX(), getPosition().getY(), new_pos.getX(), new_pos.getY());
 }
+*/
 void Enemy::movementHugObstacle() {
 
 }

@@ -22,11 +22,7 @@ LevelManager& LevelManager::getInstance() {
 	return levelManager;
 }
 int LevelManager::startUp() {
-	//Player* p=new Player;
-
-	/*if (0 == WM.setViewFollowing(p)) {
-		LM.writeLog("NULL");
-	}*/
+	p.start();
 	loadLevel(0);
 	df::Manager::startUp();
 	return 0;
@@ -56,9 +52,9 @@ int LevelManager::loadLevel(int levelID) {
 			WM.markForDelete(li->currentObject());
 		}
 		if ((getLevelIndex() == levelID) && (li->currentObject()->getType() == "Player")) {//If the level was reset
-			Player* p = (Player*) li->currentObject();
+			//Player* p = (Player*) li->currentObject();
 			//Resets the player's values and view objects
-			p->valueReset();
+			p.valueReset();
 		}
 		li->next();
 	}
@@ -66,10 +62,18 @@ int LevelManager::loadLevel(int levelID) {
 	setLevelIndex(levelID);
 	switch (levelID) {
 	case 0:
-		drawContainer();
-		new LevelEnd(df::Vector(30, 13));
-		new HealthPack(df::Vector(30, 5));
-		new Enemy(df::Vector(50, 13), true, backAndFourth);
+		drawBarrier(20, 3);
+		drawBarrier(20, 18);
+		drawBarrier(100, 3);
+		drawBarrier(100, 18);
+		drawBarrier(120, 3);
+		drawBarrier(120, 18);
+		drawBox(55, 15);
+		drawContainer(5,3, 120, 24);
+		p.setPosition(df::Vector(12, 22));
+		//new LevelEnd(df::Vector(30, 13));
+		//new HealthPack(df::Vector(30, 5));
+		new Enemy(df::Vector(60, 7 ), true, backAndForth);
 		break;
 	case 1:
 		new LevelEnd(df::Vector(50, 13));
@@ -97,11 +101,32 @@ void LevelManager::resetLevel() {
 	loadLevel(getLevelIndex());
 }
 
+void LevelManager::drawBox(float x, float y) {
+	new Obstacle(df::Vector(x, y), df::YELLOW, "box");
+}
 
-void LevelManager::drawContainer() {
-	Obstacle* o=new Obstacle(df::Vector(40, 0), df::YELLOW, "container wall h");
-	LM.writeLog("(%f,%f)", o->getBox().getCorner().getX(), o->getBox().getCorner().getY());
-	new Obstacle(df::Vector(40, 24), df::YELLOW, "container wall h");
-	new Obstacle(df::Vector(0, 12), df::YELLOW, "container wall v");
-	new Obstacle(df::Vector(80, 12), df::YELLOW, "container wall v");
+void LevelManager::drawBarrier(float x, float y) {
+	new Obstacle(df::Vector(x, y+4.5), df::YELLOW, "container barrier wall v");
+	new Obstacle(df::Vector(x+5, y + 4.5), df::YELLOW, "container barrier wall v");
+	new Obstacle(df::Vector(x+2.5, y), df::YELLOW, "container barrier wall h");
+	new Obstacle(df::Vector(x + 2.5, y+9), df::YELLOW, "container barrier wall h");
+}
+
+void LevelManager::drawContainer(float x, float y, int length, int height)
+{
+	for (int i = 0; i < length; i = i + 40) {
+		drawContainerH(x+i, y);
+		drawContainerH(x + i, y+height);
+	}
+	for (int i = 0; i < height; i = i + 12) {
+		drawContainerV(x,y + i);
+		drawContainerV(x+length, y + i);
+	}
+}
+
+void LevelManager::drawContainerH(float x, float y) {
+	new Obstacle(df::Vector(x+20, y), df::YELLOW, "container wall h");
+}
+void LevelManager::drawContainerV(float x, float y) {
+	new Obstacle(df::Vector(x, y+6), df::YELLOW, "container wall v");
 }

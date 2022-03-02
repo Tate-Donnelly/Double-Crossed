@@ -8,8 +8,12 @@
 #include "ResourceManager.h"
 #include "WorldManager.h"
 #include "LevelManager.h"
+#include "Player.h"
 
 GameOver::GameOver() {
+    p.setPosition(df::Vector(40, 12));
+    p.getAnimation().getSprite()->setColor(df::BLACK);
+    setAltitude(3);
     setType("GameOver");
     //links to the "game over" sprite
     if (setSprite("gameover") == 0) {
@@ -20,8 +24,8 @@ GameOver::GameOver() {
     }
     setColor(df::YELLOW);
     //Sets location
-    df::Vector p(WM.getBoundary().getHorizontal() / 2, WM.getBoundary().getVertical() / 2);
-    setPosition(p);
+    df::Vector pos(p.getPosition());
+    setPosition(pos);
     levelM.insertProtected(this);
 }
 
@@ -49,9 +53,12 @@ GameOver::~GameOver() {
     df::ObjectListIterator i(new df::ObjectList(WM.getAllObjects()));
     for (i.first(); !i.isDone(); i.next()) {
         df::Object* p_o = i.currentObject();
-        if (p_o != this) {
+        if (p_o->getType() != "Player" && p_o->getType() != "GameOver") {
+            std::cout << p_o->getType() << "\n";
             WM.markForDelete(p_o);
+            
         }
+        
     }
     new GameStart;
 }

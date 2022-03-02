@@ -4,6 +4,9 @@
 #include "Enemy.h"
 #include "EventMouse.h"
 #include "EventKeyboard.h"
+
+# define p Player :: getInstance ()
+
 class Player :
     public df::Object
     {
@@ -30,7 +33,8 @@ class Player :
     public:
         Player(df::Vector position);
         Player();
-        ~Player();
+        void start();
+        static Player& getInstance();
         int eventHandler(const df::Event* p_e);
         //If level is reset values are reset
         void valueReset();

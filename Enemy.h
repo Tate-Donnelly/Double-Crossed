@@ -7,9 +7,10 @@
 
 class FOV;
 enum MovementPatern {
-    backAndFourth,
+    backAndForth,
     diamond,
     hugObstacle,
+    square
 };
 
 class Enemy :
@@ -24,18 +25,14 @@ private:
     int fire_slowdown;
     float d_x;
     float d_y;
-    int right_x; // for truncation purposes
-    int right_y;
-    int left_x;
-    int left_y;
-    int top_x;
-    int top_y;
-    int bot_x;
-    int bot_y;
+    float left_x;
+    float bottom_y;
+    float right_x;
+    float top_y;
     bool facingLeft;
     FOV* myFOV;
     df::Vector FOVector;
-    MovementPatern movementPatern;
+    MovementPatern movementPattern;
     //df::Vector top;
     //df::Vector bottom;
     //df::Vector left;
@@ -58,7 +55,8 @@ public:
     bool CanShoot() const;
     void setMovement(MovementPatern mp);
     MovementPatern getMovement() const;
-    void movementBackAndFourth();
+    void movementBackAndForth();
+    void moveSquare();
     void movementDiamond();
     void movementHugObstacle();
 };

@@ -1,12 +1,12 @@
 <HEADER>
 frames 1
-width 80
+width 40
 height 1
 color white
 slowdown 5
 </HEADER>
 <BODY>
-________________________________________________________________________________
+________________________________________
 end
 </BODY>
 <FOOTER>

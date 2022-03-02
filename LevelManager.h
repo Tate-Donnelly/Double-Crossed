@@ -40,7 +40,15 @@ public:
     //Reset the current level
     void resetLevel();
 
-    void drawContainer();
+    void drawContainer(float x, float y, int length, int height);
+
+    void drawContainerH(float x, float y);
+
+    void drawContainerV(float x, float y);
+
+    void drawBarrier(float x, float y);
+
+    void drawBox(float x, float y);
 };
 #endif
 

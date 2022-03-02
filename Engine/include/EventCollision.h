@@ -15,7 +15,7 @@ namespace df {
         Vector m_position;
     public:
         EventCollision();
-        EventCollision(Object* p_o1, Object* p_o2, Vector p);
+        EventCollision(Object* p_o1, Object* p_o2, Vector pos);
 
         //Getters and setters for objects in collision
         void setObject1(Object* o);

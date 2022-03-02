@@ -20,14 +20,21 @@
 #pragma comment(lib, "proj2-Donnelly.lib")
 
 Player::Player() {
-	Reticle* r=new Reticle;
+
+	if (-1 == WM.setViewFollowing(this)) {
+		LM.writeLog("HERE");
+	}
+}
+
+void Player::start() {
+	Reticle* r = new Reticle;
 	setType("Player");
 	setAltitude(3);
 	setSolidness(df::HARD);
 	setSprite("playerL");
 
 	setSpeed(.25);
-	setPosition(df::Vector(50, 5));
+	setPosition(df::Vector(40, 12));
 
 	move_slowdown = 5;
 	move_countdown = move_slowdown;
@@ -35,10 +42,6 @@ Player::Player() {
 	bullets = 3;
 	lives = 3;
 
-
-	if (-1 == WM.setViewFollowing(this)) {
-		LM.writeLog("HERE");
-	}
 
 	//Displays available bullets
 	df::ViewObject* p_vo = new df::ViewObject;
@@ -76,8 +79,11 @@ Player::Player() {
 	target = NULL;
 	sneakAttack = false;
 }
-Player::~Player() {
-	new GameOver;
+
+
+Player& Player::getInstance() {
+	static Player player;
+	return player;
 }
 
 //Handles events
@@ -117,7 +123,7 @@ int Player::eventHandler(const df::Event* p_e) {
 		df::EventView* ev = new df::EventView("Lives", -1, true);
 		WM.onEvent(ev);
 		if (lives == 0) {
-			WM.markForDelete(this);
+			new GameOver;
 		}
 		return 1;
 	}
@@ -144,12 +150,7 @@ void Player::move(float x, float y) {
 	df::Vector new_pos(getPosition().getX() + x, getPosition().getY() + y);
 
 	WM.moveObject(this, new_pos);
-	df::Box new_view = WM.getView();
-	df::Vector corner = new_view.getCorner();
-	corner.setXY(corner.getX()+x,corner.getY()+y);
-	new_view.setCorner(corner);
-	WM.setView(new_view);
-	LM.writeLog(0,"Old Position (%f,%f), New Position (%f,%f)", getPosition().getX(), getPosition().getY(), new_pos.getX(), new_pos.getY());
+	
 }
 
 //Keyboard event
@@ -206,7 +207,7 @@ int Player::mouse(const df::EventMouse* mouse) {
 		}
 		else {
 			if (sneakAttack) {
-
+				WM.markForDelete(target);
 			}
 			return 1;
 		}
@@ -236,8 +237,8 @@ int Player::shoot(const df::EventMouse* mouse) {
 		df::Vector v(pos.getX() - getPosition().getX(), pos.getY() - getPosition().getY());
 		v.normalize();
 		v.scale(1);
-		Bullet* p = new Bullet(getPosition(), getId());
-		p->setVelocity(v);
+		Bullet* b = new Bullet(getPosition(), getId());
+		b->setVelocity(v);
 		return 1;
 	}
 	return 0;

@@ -9,9 +9,9 @@ Reticle::Reticle() {
     setType("Reticle");
     setSolidness(df::SPECTRAL);
     setAltitude(3);
-    df::Vector p(WM.getBoundary().getHorizontal() / 2,
+    df::Vector pos(WM.getBoundary().getHorizontal() / 2,
         WM.getBoundary().getVertical() / 2);
-    setPosition(p);
+    setPosition(pos);
 }
 
 //Handles events

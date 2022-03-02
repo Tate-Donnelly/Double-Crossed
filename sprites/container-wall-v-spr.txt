@@ -1,33 +1,11 @@
 <HEADER>
 frames 1
 width 1
-height 34
+height 12
 color white
 slowdown 5
 </HEADER>
 <BODY>
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
 |
 |
 |
