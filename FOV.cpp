@@ -40,8 +40,22 @@ int FOV::eventHandler(const df::Event* p_e) {
 			return 1;
 		}
 		else if (FOV && obstacle && ((myEnemy->getMovement()==horizontal )|| (myEnemy->getMovement() == vertical))) {
-			LM.writeLog("FOV Found Obstacle");
-			//setObstacleCollision(true);
+			LM.writeLog(0,"FOV Found Obstacle");
+			/*if (getVelocity().getX() < 0) {
+				setPosition(df::Vector(getPosition().getX() - 3, getPosition().getY()));
+			}else if (getVelocity().getX() > 0) {
+				setPosition(df::Vector(getPosition().getX() + 3, getPosition().getY()));
+			}
+			else if (getVelocity().getY() > 0) {
+				setPosition(df::Vector(getPosition().getX(), getPosition().getY()-1.5));
+			}
+			else if (getVelocity().getY() < 0) {
+				setPosition(df::Vector(getPosition().getX(), getPosition().getY() + 1.5));
+			}
+			//setObstacleCollision(false);
+			//setVelocity(df::Vector());*/
+			setObstacleCollision(true);
+			setVelocity(df::Vector(0, 0));
 			//setVelocity(df::Vector(-1 * getVelocity().getX(), -1 * getVelocity().getY()));
 			
 		}

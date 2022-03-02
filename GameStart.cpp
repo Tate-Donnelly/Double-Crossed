@@ -23,7 +23,7 @@ GameStart::GameStart() {
     df::Vector pos(40, 12);
     setPosition(pos);
     //Plays start music
-    p_music = RM.getMusic("start music");
+    p_music = RM.getMusic("tense");
     playMusic();
     
     levelM.insertProtected(this);

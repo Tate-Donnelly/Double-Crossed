@@ -60,9 +60,9 @@ int Enemy::eventHandler(const df::Event* p_e)
 		bool enemy = ((p_collision_event->getObject1()->getType() == "Enemy") || (p_collision_event->getObject2()->getType() == "Enemy"));
 		bool obstacle = ((p_collision_event->getObject1()->getType() == "Obstacle") || (p_collision_event->getObject2()->getType() == "Obstacle"));
 		if (enemy && obstacle && bounce) {
-			LM.writeLog("Obstacle Found");
-			facingLeft = !facingLeft;
+			LM.writeLog(0,"Obstacle Found");
 			myFOV->setObstacleCollision(false);
+			facingLeft = !facingLeft;
 		}
 
 	}
@@ -190,14 +190,28 @@ void Enemy::movementHorizontal() {
 	if (facingLeft) {
 		setSprite("enemyL");
 		setVelocity(df::Vector(-.25, 0));
-		myFOV->setPosition(df::Vector(getPosition().getX() - 10, getPosition().getY()));
-		myFOV->setVelocity(df::Vector(-.25, 0));
+		if (!myFOV->getObstacleCollision()) {
+			myFOV->setPosition(df::Vector(getPosition().getX() - 10, getPosition().getY()));
+			myFOV->setVelocity(df::Vector(-.25, 0));
+		}
+		else {
+			myFOV->setVelocity(df::Vector(0, 0));
+			myFOV->setPosition(df::Vector(myFOV->getPosition().getX()+1, getPosition().getY()));
+			myFOV->setVelocity(df::Vector(0, 0));
+		}
 	}
 	else {
 		setSprite("enemyR");
 		setVelocity(df::Vector(.25, 0));
-		myFOV->setPosition(df::Vector(getPosition().getX() + 10, getPosition().getY()));
-		myFOV->setVelocity(df::Vector( .25,0));
+		if (!myFOV->getObstacleCollision()) {
+			myFOV->setPosition(df::Vector(getPosition().getX() + 10, getPosition().getY()));
+			myFOV->setVelocity(df::Vector(.25, 0));
+		}
+		else {
+			myFOV->setVelocity(df::Vector(0, 0));
+			myFOV->setPosition(df::Vector(myFOV->getPosition().getX()-1, getPosition().getY()));
+			myFOV->setVelocity(df::Vector(0, 0));
+		}
 	}
 }
 
@@ -205,14 +219,28 @@ void Enemy::movementVertical() {
 	if (facingLeft) {
 		setSprite("enemyL");
 		setVelocity(df::Vector(0,-.15));
-		myFOV->setPosition(df::Vector(getPosition().getX(), getPosition().getY() - 3));
-		myFOV->setVelocity(df::Vector(0, -.15));
+		if (!myFOV->getObstacleCollision()) {
+			//myFOV->setPosition(df::Vector(getPosition().getX(), getPosition().getY()  3));
+			myFOV->setVelocity(df::Vector(0, -.15));
+		}
+		else {
+			myFOV->setVelocity(df::Vector(0, 0));
+			myFOV->setPosition(df::Vector(getPosition().getX(), getPosition().getY()-1));
+		}
 	}
 	else {
 		setSprite("enemyR");
 		setVelocity(df::Vector(0,.15));
-		myFOV->setPosition(df::Vector(getPosition().getX(), getPosition().getY() + 3));
-		myFOV->setVelocity(df::Vector(0, .15));
+		if (!myFOV->getObstacleCollision()) {
+			//myFOV->setPosition(df::Vector(getPosition().getX(), getPosition().getY() + 3));
+			myFOV->setVelocity(df::Vector(0, .15));
+			
+		}
+		else {
+			myFOV->setVelocity(df::Vector(0, 0));
+			myFOV->setPosition(df::Vector(getPosition().getX(), getPosition().getY()+1));
+
+		}
 	}
 }
 

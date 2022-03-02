@@ -47,9 +47,18 @@ void Bullet::hit(const df::EventCollision* p_collision_event) {
     bool bullet = ((p_collision_event->getObject1()->getType() == "Bullet") || (p_collision_event->getObject2()->getType() == "Bullet"));
     bool enemy = ((p_collision_event->getObject1()->getType() == "Enemy") || (p_collision_event->getObject2()->getType() == "Enemy"));
     bool player = ((p_collision_event->getObject1()->getType() == "Player") || (p_collision_event->getObject2()->getType() == "Player"));
+    bool obstacle = ((p_collision_event->getObject1()->getType() == "Obstacle") || (p_collision_event->getObject2()->getType() == "Obstacle"));
     if ((bullet && enemy)) {
         if ((fromID != p_collision_event->getObject1()->getId()) && (fromID != p_collision_event->getObject2()->getId())) {
             WM.markForDelete(p_collision_event->getObject1());
+            WM.markForDelete(p_collision_event->getObject2());
+        }
+    }
+    else if (bullet && obstacle) {
+        if ((p_collision_event->getObject1()->getType() == "Bullet")) {
+            WM.markForDelete(p_collision_event->getObject1());
+        }
+        else {
             WM.markForDelete(p_collision_event->getObject2());
         }
     }

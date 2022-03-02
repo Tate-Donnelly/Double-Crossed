@@ -51,10 +51,6 @@ void loadResources(void) {
     RM.loadSprite("sprites/fov-spr.txt", "fov");
     RM.loadSound("sounds/fire.wav", "fire");
     RM.loadSound("sounds/game-over.wav", "game over");
-    RM.loadMusic("sounds/start-music.wav", "start music");
-    RM.getMusic("start music")->stop();
-    RM.loadMusic("sounds/calm-before-the-storm.wav", "calm");
-    RM.getMusic("calm")->stop();
     RM.loadMusic("sounds/chase.wav", "chase");
     RM.getMusic("chase")->stop();
     RM.loadMusic("sounds/city.wav", "city");

@@ -1,4 +1,5 @@
 #include "LevelManager.h"
+#include "ResourceManager.h"
 #include "LogManager.h"
 #include "WorldManager.h"
 #include "ObjectListIterator.h"
@@ -121,9 +122,7 @@ void LevelManager::drawContainerV(float x, float y) {
 }
 
 void LevelManager::Level1() {
-	df::Music calm;
-	calm.setLabel("calm");
-	calm.play();
+	RM.loadMusic("sounds/calm-before-the-storm.wav", "calm");
 	drawBarrier(20, 3);
 	drawBarrier(20, 18);
 	drawBarrier(100, 3);
@@ -135,6 +134,8 @@ void LevelManager::Level1() {
 	p.setPosition(df::Vector(12, 22));
 	//new LevelEnd(df::Vector(30, 13));
 	//new HealthPack(df::Vector(30, 5));
-	new Enemy(df::Vector(60, 7), true, horizontal);
+	new Enemy(df::Vector(30, 21), false, horizontal);
+	new Enemy(df::Vector(93, 9), true, horizontal);
+	new Enemy(df::Vector(93, 24), false, vertical);
 	new Enemy(df::Vector(112, 7), true, vertical);
 }
