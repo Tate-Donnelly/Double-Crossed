@@ -20,7 +20,6 @@
 #pragma comment(lib, "proj2-Donnelly.lib")
 
 Player::Player() {
-
 	if (-1 == WM.setViewFollowing(this)) {
 		LM.writeLog("HERE");
 	}
@@ -89,11 +88,11 @@ Player& Player::getInstance() {
 //Handles events
 	//Returns 0 when ignored
 int Player::eventHandler(const df::Event* p_e) {
-	if (p_e->getType() == df::KEYBOARD_EVENT) {
+	if (p_e->getType() == df::KEYBOARD_EVENT/* && active*/) {
 		df::EventKeyboard* key = (df::EventKeyboard*)p_e;
 		keyboard(key);
 		return 1;
-	}if (p_e->getType() == df::MSE_EVENT) {
+	}if (p_e->getType() == df::MSE_EVENT/* && active*/) {
 		const df::EventMouse* p_mouse_event = dynamic_cast <df::EventMouse const*> (p_e);
 		mouse(p_mouse_event);
 
@@ -142,14 +141,20 @@ int Player::eventHandler(const df::Event* p_e) {
 
 //Moves Player up and down
 void Player::move(float x, float y) {
-	if ((move_countdown < 0)||!active) {
+	if ((move_countdown < 0)) {
 		return;
 	}
-	move_countdown = move_slowdown;
-	//Move if in window
-	df::Vector new_pos(getPosition().getX() + x, getPosition().getY() + y);
+	if (active) {
+		move_countdown = move_slowdown;
+		//Move if in window
+		df::Vector new_pos(getPosition().getX() + x, getPosition().getY() + y);
 
-	WM.moveObject(this, new_pos);
+		WM.moveObject(this, new_pos);
+	}
+	else {
+		LM.writeLog("Not active");
+		return;
+	}
 	
 }
 
@@ -159,6 +164,11 @@ int Player::keyboard(const df::EventKeyboard* key) {
 	case df::Keyboard::R: //Reset Level
 		if (key->getKeyboardAction() == df::KEY_PRESSED) {
 			levelM.resetLevel();
+		}
+		break;
+	case df::Keyboard::L: //Next Level
+		if (key->getKeyboardAction() == df::KEY_PRESSED) {
+			levelM.nextLevel();
 		}
 		break;
 	case df::Keyboard::X: //Hit Test

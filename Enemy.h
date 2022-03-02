@@ -40,7 +40,6 @@ private:
     //df::Vector left;
     //df::Vector right;
     //Moves Enemy
-    void move();
     bool canShoot;
     bool bounce;
 public:
@@ -56,6 +55,7 @@ public:
     void setCanShoot(bool shoot = true);
     bool CanShoot() const;
     bool CanBounce() const;
+    void move();
     void setMovement(MovementPatern mp);
     MovementPatern getMovement() const;
     void movementBackAndForth();

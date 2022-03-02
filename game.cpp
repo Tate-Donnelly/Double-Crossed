@@ -15,7 +15,7 @@ int main() {
     else {
         LM.setFlush(true);//Set flush of logfile during development
 
-        WM.setBoundary(df::Box(df::Vector(0, 0), 240, 30));
+        WM.setBoundary(df::Box(df::Vector(0, 0), 365, 54));
         WM.setView(df::Box(df::Vector(0, 0), 80, 24));
         WM.setViewPosition(df::Vector(40, 12));
         p.setPosition(df::Vector(40, 12));
@@ -43,6 +43,8 @@ void loadResources(void) {
     RM.loadSprite("sprites/LevelEnd.txt", "LevelEnd");
     RM.loadSprite("sprites/one-char-wall-h-spr.txt", "one char wall h");
     RM.loadSprite("sprites/one-char-wall-v-spr.txt", "one char wall v");
+    RM.loadSprite("sprites/container-wall-h-up-spr.txt", "container wall h up");
+    RM.loadSprite("sprites/container-wall-h-down-spr.txt", "container wall h down");
     RM.loadSprite("sprites/container-wall-h-spr.txt", "container wall h");
     RM.loadSprite("sprites/container-wall-v-spr.txt", "container wall v");
     RM.loadSprite("sprites/box-spr.txt", "box");

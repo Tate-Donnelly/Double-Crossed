@@ -53,7 +53,7 @@ GameOver::~GameOver() {
     df::ObjectListIterator i(new df::ObjectList(WM.getAllObjects()));
     for (i.first(); !i.isDone(); i.next()) {
         df::Object* p_o = i.currentObject();
-        if (p_o->getType() != "Player" && p_o->getType() != "GameOver") {
+        if (p_o->getType() != "Player" && p_o->getType() != "Reticle" && p_o->getType() != "GameOver") {
             std::cout << p_o->getType() << "\n";
             WM.markForDelete(p_o);
             

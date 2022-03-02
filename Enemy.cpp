@@ -58,9 +58,10 @@ int Enemy::eventHandler(const df::Event* p_e)
 	if (p_e->getType() == df::COLLISION_EVENT) {
 		const df::EventCollision* p_collision_event = dynamic_cast <df::EventCollision const*> (p_e);
 		bool enemy = ((p_collision_event->getObject1()->getType() == "Enemy") || (p_collision_event->getObject2()->getType() == "Enemy"));
+		bool enemy2 = ((p_collision_event->getObject1()->getType() == "Enemy") && p_collision_event->getObject1() != this) || ((p_collision_event->getObject2()->getType() == "Enemy") && p_collision_event->getObject2() != this);
 		bool obstacle = ((p_collision_event->getObject1()->getType() == "Obstacle") || (p_collision_event->getObject2()->getType() == "Obstacle"));
-		if (enemy && obstacle && bounce) {
-			LM.writeLog(0,"Obstacle Found");
+		if (enemy && (obstacle || enemy2)  && bounce) {
+			LM.writeLog(0, "Obstacle Found");
 			myFOV->setObstacleCollision(false);
 			facingLeft = !facingLeft;
 		}
@@ -126,7 +127,7 @@ void Enemy::step() {
 		move_countdown = 0;
 	if (move_countdown == 0) {
 		move();
-		getFOV()->move(-.5, 0);
+		//getFOV()->move(-.5, 0);
 	}
 	// NOTE - in step()
 	// Fire countdown.
@@ -191,26 +192,32 @@ void Enemy::movementHorizontal() {
 		setSprite("enemyL");
 		setVelocity(df::Vector(-.25, 0));
 		if (!myFOV->getObstacleCollision()) {
-			myFOV->setPosition(df::Vector(getPosition().getX() - 10, getPosition().getY()));
-			myFOV->setVelocity(df::Vector(-.25, 0));
+			myFOV->setPosition(df::Vector(getPosition().getX() - 6, getPosition().getY()));
+			myFOV->setVelocity(df::Vector(-0.25, 0));
 		}
 		else {
-			myFOV->setVelocity(df::Vector(0, 0));
-			myFOV->setPosition(df::Vector(myFOV->getPosition().getX()+1, getPosition().getY()));
-			myFOV->setVelocity(df::Vector(0, 0));
+			//myFOV->setVelocity(df::Vector(0, 0));
+			myFOV->setObstacleCollision(false);
+			myFOV->setPosition(df::Vector(myFOV->getPosition().getX() + 1, getPosition().getY()));
+			setSprite("enemyR");
+			facingLeft = false;
+			myFOV->setVelocity(df::Vector(0.25, 0));
 		}
 	}
 	else {
 		setSprite("enemyR");
 		setVelocity(df::Vector(.25, 0));
 		if (!myFOV->getObstacleCollision()) {
-			myFOV->setPosition(df::Vector(getPosition().getX() + 10, getPosition().getY()));
+			myFOV->setPosition(df::Vector(getPosition().getX() + 7, getPosition().getY()));
 			myFOV->setVelocity(df::Vector(.25, 0));
 		}
 		else {
-			myFOV->setVelocity(df::Vector(0, 0));
-			myFOV->setPosition(df::Vector(myFOV->getPosition().getX()-1, getPosition().getY()));
-			myFOV->setVelocity(df::Vector(0, 0));
+			//myFOV->setVelocity(df::Vector(0, 0));
+			myFOV->setObstacleCollision(false);
+			myFOV->setPosition(df::Vector(myFOV->getPosition().getX() - 1, getPosition().getY()));
+			setSprite("enemyL");
+			facingLeft = true;
+			myFOV->setVelocity(df::Vector(-0.25, 0));
 		}
 	}
 }
@@ -218,27 +225,27 @@ void Enemy::movementHorizontal() {
 void Enemy::movementVertical() {
 	if (facingLeft) {
 		setSprite("enemyL");
-		setVelocity(df::Vector(0,-.15));
+		setVelocity(df::Vector(0, -.15));
 		if (!myFOV->getObstacleCollision()) {
 			//myFOV->setPosition(df::Vector(getPosition().getX(), getPosition().getY()  3));
 			myFOV->setVelocity(df::Vector(0, -.15));
 		}
 		else {
 			myFOV->setVelocity(df::Vector(0, 0));
-			myFOV->setPosition(df::Vector(getPosition().getX(), getPosition().getY()-1));
+			myFOV->setPosition(df::Vector(getPosition().getX(), getPosition().getY() - 1));
 		}
 	}
 	else {
 		setSprite("enemyR");
-		setVelocity(df::Vector(0,.15));
+		setVelocity(df::Vector(0, .15));
 		if (!myFOV->getObstacleCollision()) {
 			//myFOV->setPosition(df::Vector(getPosition().getX(), getPosition().getY() + 3));
 			myFOV->setVelocity(df::Vector(0, .15));
-			
+
 		}
 		else {
 			myFOV->setVelocity(df::Vector(0, 0));
-			myFOV->setPosition(df::Vector(getPosition().getX(), getPosition().getY()+1));
+			myFOV->setPosition(df::Vector(getPosition().getX(), getPosition().getY() + 1));
 
 		}
 	}

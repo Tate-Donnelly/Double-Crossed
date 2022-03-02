@@ -66,10 +66,9 @@ int LevelManager::loadLevel(int levelID) {
 		Level1();
 		break;
 	case 1:
-		new LevelEnd(df::Vector(50, 13));
+		Level2();
 		break;
 	case 2:
-		new LevelEnd(df::Vector(30, 13));
 		break;
 	default:
 		return 1;
@@ -81,6 +80,7 @@ void LevelManager::insertProtected(df::Object* object) {
 }
 
 int LevelManager::nextLevel() {
+	//p.setActive(false);
 	if (getLevelIndex() == totalLevels-1) {//Error if it's on the last level
 		return 1;
 	}
@@ -114,8 +114,42 @@ void LevelManager::drawContainer(float x, float y, int length, int height)
 	}
 }
 
+void LevelManager::drawContainerDown(float x, float y, int length, int height)
+{	
+	drawContainerH(x, y);
+	drawContainerH(x + 40, y);
+	drawContainerH(x + 80, y);
+	drawContainerH(x, y + height);
+	drawContainerH(x + 80, y + height);
+	for (int i = 0; i < height; i = i + 12) {
+		drawContainerV(x, y + i);
+		drawContainerV(x + length, y + i);
+	}
+}
+
+void LevelManager::drawContainerUp(float x, float y, int length, int height)
+{
+	drawContainerH(x, y);
+	drawContainerH(x + 80, y);
+	drawContainerH(x, y + height);
+	drawContainerH(x + 40, y+height);
+	drawContainerH(x + 80, y + height);
+	for (int i = 0; i < height; i = i + 12) {
+		drawContainerV(x, y + i);
+		drawContainerV(x + length, y + i);
+	}
+}
+
 void LevelManager::drawContainerH(float x, float y) {
 	new Obstacle(df::Vector(x+20, y), df::YELLOW, "container wall h");
+}
+
+void LevelManager::drawContainerHDown(float x, float y) {
+	new Obstacle(df::Vector(x + 20, y), df::YELLOW, "container wall h down");
+}
+
+void LevelManager::drawContainerHUp(float x, float y) {
+	new Obstacle(df::Vector(x + 20, y), df::YELLOW, "container wall h up");
 }
 void LevelManager::drawContainerV(float x, float y) {
 	new Obstacle(df::Vector(x, y+6), df::YELLOW, "container wall v");
@@ -132,10 +166,33 @@ void LevelManager::Level1() {
 	drawBox(55, 15);
 	drawContainer(5, 3, 120, 24);
 	p.setPosition(df::Vector(12, 22));
-	//new LevelEnd(df::Vector(30, 13));
+	new LevelEnd(df::Vector(123, 15),df::Vector(10, 15));
 	//new HealthPack(df::Vector(30, 5));
 	new Enemy(df::Vector(30, 21), false, horizontal);
 	new Enemy(df::Vector(93, 9), true, horizontal);
 	new Enemy(df::Vector(93, 24), false, vertical);
 	new Enemy(df::Vector(112, 7), true, vertical);
+}
+
+void LevelManager::Level2() {
+	//RM.loadMusic("sounds/calm-before-the-storm.wav", "calm");
+	drawContainerDown(120, 3, 120, 24);
+	drawContainerUp(120, 27, 120, 24);
+	drawBarrier(120, 3);
+	drawBarrier(120, 18);
+	drawBarrier(140, 3);
+	drawBarrier(140, 18);
+	new Enemy(df::Vector(150, 25), false, horizontal);
+	new Enemy(df::Vector(185, 25), true, horizontal);
+	new Enemy(df::Vector(150, 30), true, horizontal);
+	new Enemy(df::Vector(185, 30), false, horizontal);
+	p.setPosition(df::Vector(123, 15));
+	WM.setViewPosition(df::Vector(123, 15));
+	/*int i = 0;
+	while (i < 30) {
+		if (p.getPosition()!= df::Vector(120, 15)) {
+			p.setPosition(df::Vector(120, 15));
+		}
+		i++;
+	}*/
 }

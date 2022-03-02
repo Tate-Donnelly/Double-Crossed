@@ -43,8 +43,12 @@ public:
     void resetLevel();
 
     void drawContainer(float x, float y, int length, int height);
+    void drawContainerDown(float x, float y, int length, int height);
+    void drawContainerUp(float x, float y, int length, int height);
 
     void drawContainerH(float x, float y);
+    void drawContainerHDown(float x, float y);
+    void drawContainerHUp(float x, float y);
 
     void drawContainerV(float x, float y);
 
@@ -53,6 +57,7 @@ public:
     void drawBox(float x, float y);
 
     void Level1();
+    void Level2();
 };
 #endif
 
