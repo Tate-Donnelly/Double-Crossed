@@ -2,6 +2,7 @@
 #include "EventFOV.h"
 #include "EventCollision.h"
 #include "WorldManager.h"
+#include "LogManager.h"
 
 FOV::FOV(Enemy* ene)
 {
@@ -11,6 +12,7 @@ FOV::FOV(Enemy* ene)
 	setSprite("fov");
 	setSolidness(df::SOFT);
 	setPosition(ene->getPosition());
+	obstacleCollision = false;
 }
 
 FOV::FOV() {
@@ -27,6 +29,7 @@ int FOV::eventHandler(const df::Event* p_e) {
 		const df::EventCollision* p_collision_event = dynamic_cast <const df::EventCollision*> (p_e);
 		bool FOV = ((p_collision_event->getObject1()->getType() == "FOV") || (p_collision_event->getObject2()->getType() == "FOV"));
 		bool player = ((p_collision_event->getObject1()->getType() == "Player") || (p_collision_event->getObject2()->getType() == "Player"));
+		bool obstacle = ((p_collision_event->getObject1()->getType() == "Obstacle") || (p_collision_event->getObject2()->getType() == "Obstacle"));
 		if ((FOV && player)) {
 			if ((p_collision_event->getObject1()->getType() == "Player")) {
 				myEnemy->shoot();
@@ -36,16 +39,30 @@ int FOV::eventHandler(const df::Event* p_e) {
 			}
 			return 1;
 		}
+		else if (FOV && obstacle && ((myEnemy->getMovement()==horizontal )|| (myEnemy->getMovement() == vertical))) {
+			LM.writeLog("FOV Found Obstacle");
+			//setObstacleCollision(true);
+			//setVelocity(df::Vector(-1 * getVelocity().getX(), -1 * getVelocity().getY()));
+			
+		}
 	}
 	return 0;//Ignores Event
 }
 
+void FOV::setObstacleCollision(bool c)
+{
+	obstacleCollision = c;
+}
+
+bool FOV::getObstacleCollision() {
+	return obstacleCollision;
+}
 void FOV::move(float x, float y)
 {
 	//Move if in window
-	df::Vector new_pos(getPosition().getX() + x, getPosition().getY() + y);
+	/*df::Vector new_pos(getPosition().getX() + x, getPosition().getY() + y);
 	setVelocity(new_pos);
-	WM.moveObject(this, new_pos);
+	WM.moveObject(this, new_pos);*/
 }
 
 /*

@@ -2,6 +2,7 @@
 #define __LEVEL_MANAGER_H__
 #include <Manager.h>
 #include "Player.h"
+#include "Music.h"
 #include "Event.h"
 #include "ObjectList.h"
 
@@ -13,6 +14,7 @@ private:
     int totalLevels=3;
     int level_index;
     df::ObjectList m_protectedObjects;//Objects that should not be deleted when level changes
+    
 public:
     LevelManager();
     //Get the instance of the LevelManager
@@ -49,6 +51,8 @@ public:
     void drawBarrier(float x, float y);
 
     void drawBox(float x, float y);
+
+    void Level1();
 };
 #endif
 

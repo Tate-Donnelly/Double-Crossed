@@ -15,12 +15,15 @@ public:
 	FOV();
 	~FOV();
 	int eventHandler(const df::Event* p_e);
+	void setObstacleCollision(bool c);
+	bool getObstacleCollision();
 	void move(float x, float y);
 	//float getVisionX();
 	//void setVisionX(float new_vision_x);
 	//float getVisionY();
 	//void setVisionY(float new_vision_y);
 private:
+	bool obstacleCollision;
 	//float vision_x;
 	//float vision_y;
 };

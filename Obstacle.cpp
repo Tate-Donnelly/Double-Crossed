@@ -8,4 +8,5 @@ Obstacle::Obstacle(df::Vector pos,df::Color color, std::string sprite) {
 	setPosition(pos);
 	setSolidness(df::HARD);
 	setAltitude(3);
+	setType("Obstacle");
 }

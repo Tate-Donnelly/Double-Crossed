@@ -8,6 +8,8 @@
 class FOV;
 enum MovementPatern {
     backAndForth,
+    horizontal,
+    vertical,
     diamond,
     hugObstacle,
     square
@@ -53,9 +55,12 @@ public:
     FOV* getFOV();
     void setCanShoot(bool shoot = true);
     bool CanShoot() const;
+    bool CanBounce() const;
     void setMovement(MovementPatern mp);
     MovementPatern getMovement() const;
     void movementBackAndForth();
+    void movementHorizontal();
+    void movementVertical();
     void moveSquare();
     void movementDiamond();
     void movementHugObstacle();

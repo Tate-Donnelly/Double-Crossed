@@ -15,15 +15,13 @@ int main() {
     else {
         LM.setFlush(true);//Set flush of logfile during development
 
-
-
-        loadResources();//Loads the game's resources
         WM.setBoundary(df::Box(df::Vector(0, 0), 240, 30));
         WM.setView(df::Box(df::Vector(0, 0), 80, 24));
         WM.setViewPosition(df::Vector(40, 12));
         p.setPosition(df::Vector(40, 12));
         p.setSprite("");
-        //Player* p = new Player;
+
+        loadResources();//Loads the game's resources
         populateWorld();//Populate game world with some objects.
      
 
@@ -54,12 +52,22 @@ void loadResources(void) {
     RM.loadSound("sounds/fire.wav", "fire");
     RM.loadSound("sounds/game-over.wav", "game over");
     RM.loadMusic("sounds/start-music.wav", "start music");
+    RM.getMusic("start music")->stop();
+    RM.loadMusic("sounds/calm-before-the-storm.wav", "calm");
+    RM.getMusic("calm")->stop();
+    RM.loadMusic("sounds/chase.wav", "chase");
+    RM.getMusic("chase")->stop();
+    RM.loadMusic("sounds/city.wav", "city");
+    RM.getMusic("city")->stop();
+    RM.loadMusic("sounds/documentary.wav", "documentary");
+    RM.getMusic("documentary")->stop();
+    RM.loadMusic("sounds/tense.wav", "tense");
+    RM.getMusic("tense")->stop();
   //  RM.loadSprite("sprites/fov-q1-spr.txt", "q1");
 }
 
 //Populate the world with sprites and sounds
 void populateWorld() {
-    RM.getMusic("start music")->stop();
     GameStart* g=new GameStart();
     
 }

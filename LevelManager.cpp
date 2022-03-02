@@ -62,18 +62,7 @@ int LevelManager::loadLevel(int levelID) {
 	setLevelIndex(levelID);
 	switch (levelID) {
 	case 0:
-		drawBarrier(20, 3);
-		drawBarrier(20, 18);
-		drawBarrier(100, 3);
-		drawBarrier(100, 18);
-		drawBarrier(120, 3);
-		drawBarrier(120, 18);
-		drawBox(55, 15);
-		drawContainer(5,3, 120, 24);
-		p.setPosition(df::Vector(12, 22));
-		//new LevelEnd(df::Vector(30, 13));
-		//new HealthPack(df::Vector(30, 5));
-		new Enemy(df::Vector(60, 7 ), true, backAndForth);
+		Level1();
 		break;
 	case 1:
 		new LevelEnd(df::Vector(50, 13));
@@ -129,4 +118,23 @@ void LevelManager::drawContainerH(float x, float y) {
 }
 void LevelManager::drawContainerV(float x, float y) {
 	new Obstacle(df::Vector(x, y+6), df::YELLOW, "container wall v");
+}
+
+void LevelManager::Level1() {
+	df::Music calm;
+	calm.setLabel("calm");
+	calm.play();
+	drawBarrier(20, 3);
+	drawBarrier(20, 18);
+	drawBarrier(100, 3);
+	drawBarrier(100, 18);
+	drawBarrier(120, 3);
+	drawBarrier(120, 18);
+	drawBox(55, 15);
+	drawContainer(5, 3, 120, 24);
+	p.setPosition(df::Vector(12, 22));
+	//new LevelEnd(df::Vector(30, 13));
+	//new HealthPack(df::Vector(30, 5));
+	new Enemy(df::Vector(60, 7), true, horizontal);
+	new Enemy(df::Vector(112, 7), true, vertical);
 }
