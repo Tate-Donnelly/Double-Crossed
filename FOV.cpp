@@ -28,6 +28,7 @@ int FOV::eventHandler(const df::Event* p_e) {
 	if ((p_e->getType() == df::COLLISION_EVENT)) {
 		const df::EventCollision* p_collision_event = dynamic_cast <const df::EventCollision*> (p_e);
 		bool FOV = ((p_collision_event->getObject1()->getType() == "FOV") || (p_collision_event->getObject2()->getType() == "FOV"));
+		bool dFOV = ((p_collision_event->getObject1()->getType() == "FOV") && (p_collision_event->getObject2()->getType() == "FOV"));
 		bool player = ((p_collision_event->getObject1()->getType() == "Player") || (p_collision_event->getObject2()->getType() == "Player"));
 		bool obstacle = ((p_collision_event->getObject1()->getType() == "Obstacle") || (p_collision_event->getObject2()->getType() == "Obstacle"));
 		if ((FOV && player)) {
@@ -38,6 +39,12 @@ int FOV::eventHandler(const df::Event* p_e) {
 				myEnemy->shoot();
 			}
 			return 1;
+		}
+		else if (dFOV) {
+			LM.writeLog(0, "two FOVs collided");
+			setObstacleCollision(true);
+			setVelocity(df::Vector(0, 0));
+			myEnemy->move();
 		}
 		else if (FOV && obstacle && ((myEnemy->getMovement() == horizontal) || (myEnemy->getMovement() == vertical))) {
 			LM.writeLog(0, "FOV Found Obstacle");
