@@ -66,6 +66,15 @@
     <ClCompile Include="FOV.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Intel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Landmine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LMExplosion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -114,6 +123,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FOV.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Intel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Landmine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LMExplosion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

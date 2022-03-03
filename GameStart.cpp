@@ -37,7 +37,7 @@ void GameStart::playMusic() {
 //Starts the game
 void GameStart::start() {
     levelM.startUp();
-    p_music->pause();
+    //p_music->pause();
     // When game starts, paint it black.
     getAnimation().getSprite()->setColor(df::BLACK);
 }

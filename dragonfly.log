@@ -1,417 +1,588 @@
 
- 20: 30 : 39 : LogManager startUp()
- 20: 30 : 39 : WorldManager startUp()
- 20: 30 : 39 : Font accepted
- 20: 30 : 39 : DisplayManager started
- 20: 30 : 39 : SRM::startUp(): Successfully started.
- 20: 30 : 39 : InputManager starting up
- 20: 30 : 39 : Box width 80.000000 height 24.000000
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/player-left-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Opened file 'sprites/player-left-spr.txt'.
- 20: 30 : 39 : 	      Frames: 4
- 20: 30 : 39 : 	       Width: 3
- 20: 30 : 39 : 	      Height: 3
- 20: 30 : 39 : 	    Slowdown: 4
- 20: 30 : 39 : 	       Color: blue
- 20: 30 : 39 : SRM::loadSprite(): Sprite 'playerL' loaded.
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/player-right-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Opened file 'sprites/player-right-spr.txt'.
- 20: 30 : 39 : 	      Frames: 4
- 20: 30 : 39 : 	       Width: 3
- 20: 30 : 39 : 	      Height: 3
- 20: 30 : 39 : 	    Slowdown: 4
- 20: 30 : 39 : 	       Color: blue
- 20: 30 : 39 : SRM::loadSprite(): Sprite 'playerR' loaded.
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/enemy-left-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Opened file 'sprites/enemy-left-spr.txt'.
- 20: 30 : 39 : 	      Frames: 4
- 20: 30 : 39 : 	       Width: 3
- 20: 30 : 39 : 	      Height: 3
- 20: 30 : 39 : 	    Slowdown: 4
- 20: 30 : 39 : 	       Color: red
- 20: 30 : 39 : SRM::loadSprite(): Sprite 'enemyL' loaded.
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/enemy-right-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Opened file 'sprites/enemy-right-spr.txt'.
- 20: 30 : 39 : 	      Frames: 4
- 20: 30 : 39 : 	       Width: 3
- 20: 30 : 39 : 	      Height: 3
- 20: 30 : 39 : 	    Slowdown: 4
- 20: 30 : 39 : 	       Color: red
- 20: 30 : 39 : SRM::loadSprite(): Sprite 'enemyR' loaded.
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/bullet-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Opened file 'sprites/bullet-spr.txt'.
- 20: 30 : 39 : 	      Frames: 1
- 20: 30 : 39 : 	       Width: 1
- 20: 30 : 39 : 	      Height: 1
- 20: 30 : 39 : 	    Slowdown: 5
- 20: 30 : 39 : 	       Color: white
- 20: 30 : 39 : SRM::loadSprite(): Sprite 'bullet' loaded.
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/gameover-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Opened file 'sprites/gameover-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Warning! Unused HEADER lines:
- 20: 30 : 39 : 	'transparency #'
- 20: 30 : 39 : 	      Frames: 12
- 20: 30 : 39 : 	       Width: 54
- 20: 30 : 39 : 	      Height: 5
- 20: 30 : 39 : 	    Slowdown: 15
- 20: 30 : 39 : 	       Color: cyan
- 20: 30 : 39 : SRM::loadSprite(): Sprite 'gameover' loaded.
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/gamestart-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Opened file 'sprites/gamestart-spr.txt'.
- 20: 30 : 39 : 	      Frames: 1
- 20: 30 : 39 : 	       Width: 64
- 20: 30 : 39 : 	      Height: 8
- 20: 30 : 39 : 	    Slowdown: 15
- 20: 30 : 39 : 	       Color: yellow
- 20: 30 : 39 : SRM::loadSprite(): Sprite 'gamestart' loaded.
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/healthpack-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Opened file 'sprites/healthpack-spr.txt'.
- 20: 30 : 39 : 	      Frames: 2
- 20: 30 : 39 : 	       Width: 3
- 20: 30 : 39 : 	      Height: 2
- 20: 30 : 39 : 	    Slowdown: 15
- 20: 30 : 39 : 	       Color: red
- 20: 30 : 39 : SRM::loadSprite(): Sprite 'healthpack' loaded.
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/LevelEnd.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Opened file 'sprites/LevelEnd.txt'.
- 20: 30 : 39 : 	      Frames: 1
- 20: 30 : 39 : 	       Width: 2
- 20: 30 : 39 : 	      Height: 2
- 20: 30 : 39 : 	    Slowdown: 3
- 20: 30 : 39 : 	       Color: green
- 20: 30 : 39 : SRM::loadSprite(): Sprite 'LevelEnd' loaded.
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/one-char-wall-h-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Opened file 'sprites/one-char-wall-h-spr.txt'.
- 20: 30 : 39 : 	      Frames: 1
- 20: 30 : 39 : 	       Width: 1
- 20: 30 : 39 : 	      Height: 1
- 20: 30 : 39 : 	    Slowdown: 5
- 20: 30 : 39 : 	       Color: white
- 20: 30 : 39 : SRM::loadSprite(): Sprite 'one char wall h' loaded.
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/one-char-wall-v-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Opened file 'sprites/one-char-wall-v-spr.txt'.
- 20: 30 : 39 : 	      Frames: 1
- 20: 30 : 39 : 	       Width: 1
- 20: 30 : 39 : 	      Height: 1
- 20: 30 : 39 : 	    Slowdown: 5
- 20: 30 : 39 : 	       Color: white
- 20: 30 : 39 : SRM::loadSprite(): Sprite 'one char wall v' loaded.
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/container-wall-h-up-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Error! Cannot open file 'sprites/container-wall-h-up-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Sprite 'container wall h up' not loaded.
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/container-wall-h-down-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Error! Cannot open file 'sprites/container-wall-h-down-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Sprite 'container wall h down' not loaded.
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/container-wall-h-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Opened file 'sprites/container-wall-h-spr.txt'.
- 20: 30 : 39 : 	      Frames: 1
- 20: 30 : 39 : 	       Width: 40
- 20: 30 : 39 : 	      Height: 1
- 20: 30 : 39 : 	    Slowdown: 5
- 20: 30 : 39 : 	       Color: white
- 20: 30 : 39 : SRM::loadSprite(): Sprite 'container wall h' loaded.
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/container-wall-v-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Opened file 'sprites/container-wall-v-spr.txt'.
- 20: 30 : 39 : 	      Frames: 1
- 20: 30 : 39 : 	       Width: 1
- 20: 30 : 39 : 	      Height: 12
- 20: 30 : 39 : 	    Slowdown: 5
- 20: 30 : 39 : 	       Color: white
- 20: 30 : 39 : SRM::loadSprite(): Sprite 'container wall v' loaded.
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/box-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Opened file 'sprites/box-spr.txt'.
- 20: 30 : 39 : 	      Frames: 1
- 20: 30 : 39 : 	       Width: 14
- 20: 30 : 39 : 	      Height: 7
- 20: 30 : 39 : 	    Slowdown: 5
- 20: 30 : 39 : 	       Color: white
- 20: 30 : 39 : SRM::loadSprite(): Sprite 'box' loaded.
- 20: 30 : 39 : SRM::loadSprite(): Loading sprite 'sprites/container-barrier-wall-h-spr.txt'.
- 20: 30 : 39 : SRM::loadSprite(): Opened file 'sprites/container-barrier-wall-h-spr.txt'.
- 20: 30 : 40 : 	      Frames: 1
- 20: 30 : 40 : 	       Width: 5
- 20: 30 : 40 : 	      Height: 1
- 20: 30 : 40 : 	    Slowdown: 5
- 20: 30 : 40 : 	       Color: white
- 20: 30 : 40 : SRM::loadSprite(): Sprite 'container barrier wall h' loaded.
- 20: 30 : 40 : SRM::loadSprite(): Loading sprite 'sprites/container-barrier-wall-v-spr.txt'.
- 20: 30 : 40 : SRM::loadSprite(): Opened file 'sprites/container-barrier-wall-v-spr.txt'.
- 20: 30 : 40 : 	      Frames: 1
- 20: 30 : 40 : 	       Width: 1
- 20: 30 : 40 : 	      Height: 9
- 20: 30 : 40 : 	    Slowdown: 5
- 20: 30 : 40 : 	       Color: white
- 20: 30 : 40 : SRM::loadSprite(): Sprite 'container barrier wall v' loaded.
- 20: 30 : 40 : SRM::loadSprite(): Loading sprite 'sprites/fov-spr.txt'.
- 20: 30 : 40 : SRM::loadSprite(): Opened file 'sprites/fov-spr.txt'.
- 20: 30 : 40 : 	      Frames: 2
- 20: 30 : 40 : 	       Width: 10
- 20: 30 : 40 : 	      Height: 3
- 20: 30 : 40 : 	    Slowdown: 4
- 20: 30 : 40 : 	       Color: yellow
- 20: 30 : 40 : SRM::loadSprite(): Sprite 'fov' loaded.
- 20: 30 : 40 : SRM::loadSprite(): Loading sprite 'sprites/widebox-spr.txt'.
- 20: 30 : 40 : SRM::loadSprite(): Opened file 'sprites/widebox-spr.txt'.
- 20: 30 : 40 : 	      Frames: 1
- 20: 30 : 40 : 	       Width: 34
- 20: 30 : 40 : 	      Height: 7
- 20: 30 : 40 : 	    Slowdown: 5
- 20: 30 : 40 : 	       Color: white
- 20: 30 : 40 : SRM::loadSprite(): Sprite 'widebox' loaded.
- 20: 30 : 40 : SRM::loadSprite(): Loading sprite 'sprites/intel-spr.txt'.
- 20: 30 : 40 : SRM::loadSprite(): Opened file 'sprites/intel-spr.txt'.
- 20: 30 : 40 : 	      Frames: 2
- 20: 30 : 40 : 	       Width: 5
- 20: 30 : 40 : 	      Height: 3
- 20: 30 : 40 : 	    Slowdown: 15
- 20: 30 : 40 : 	       Color: green
- 20: 30 : 40 : SRM::loadSprite(): Sprite 'intel' loaded.
- 20: 30 : 40 : GameStart
- 20: 30 : 40 : GameManager run()
- 20: 30 : 40 : 3
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : Obstacle Created
- 20: 30 : 40 : the sprite loaded
- 20: 30 : 40 : the sprite loaded
- 20: 30 : 40 : the sprite loaded
- 20: 30 : 40 : the sprite loaded
- 20: 30 : 46 : Object 6 marked for deletion!
- 20: 30 : 46 : Object 7 marked for deletion!
- 20: 30 : 46 : Object 8 marked for deletion!
- 20: 30 : 46 : Object 9 marked for deletion!
- 20: 30 : 46 : Object 10 marked for deletion!
- 20: 30 : 46 : Object 11 marked for deletion!
- 20: 30 : 46 : Object 12 marked for deletion!
- 20: 30 : 46 : Object 13 marked for deletion!
- 20: 30 : 46 : Object 14 marked for deletion!
- 20: 30 : 46 : Object 15 marked for deletion!
- 20: 30 : 46 : Object 16 marked for deletion!
- 20: 30 : 46 : Object 17 marked for deletion!
- 20: 30 : 46 : Object 18 marked for deletion!
- 20: 30 : 46 : Object 19 marked for deletion!
- 20: 30 : 46 : Object 20 marked for deletion!
- 20: 30 : 46 : Object 21 marked for deletion!
- 20: 30 : 46 : Object 22 marked for deletion!
- 20: 30 : 46 : Object 23 marked for deletion!
- 20: 30 : 46 : Object 24 marked for deletion!
- 20: 30 : 46 : Object 25 marked for deletion!
- 20: 30 : 46 : Object 26 marked for deletion!
- 20: 30 : 46 : Object 27 marked for deletion!
- 20: 30 : 46 : Object 28 marked for deletion!
- 20: 30 : 46 : Object 29 marked for deletion!
- 20: 30 : 46 : Object 30 marked for deletion!
- 20: 30 : 46 : Object 31 marked for deletion!
- 20: 30 : 46 : Object 32 marked for deletion!
- 20: 30 : 46 : Object 33 marked for deletion!
- 20: 30 : 46 : Object 34 marked for deletion!
- 20: 30 : 46 : Object 35 marked for deletion!
- 20: 30 : 46 : Object 36 marked for deletion!
- 20: 30 : 46 : Object 37 marked for deletion!
- 20: 30 : 46 : Object 38 marked for deletion!
- 20: 30 : 46 : Object 39 marked for deletion!
- 20: 30 : 46 : Object 40 marked for deletion!
- 20: 30 : 46 : Object 41 marked for deletion!
- 20: 30 : 46 : Object 42 marked for deletion!
- 20: 30 : 46 : Object 43 marked for deletion!
- 20: 30 : 46 : Object 44 marked for deletion!
- 20: 30 : 46 : Object 45 marked for deletion!
- 20: 30 : 46 : Object 46 marked for deletion!
- 20: 30 : 46 : Object 47 marked for deletion!
- 20: 30 : 46 : Object 48 marked for deletion!
- 20: 30 : 46 : Object 49 marked for deletion!
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : the sprite loaded
- 20: 30 : 46 : the sprite loaded
- 20: 30 : 46 : the sprite loaded
- 20: 30 : 46 : the sprite loaded
- 20: 30 : 46 : the sprite loaded
- 20: 30 : 46 : the sprite loaded
- 20: 30 : 46 : Obstacle Created
- 20: 30 : 46 : Set to 2
- 20: 30 : 46 : Object 43 marked for deletion!
- 20: 30 : 46 : Object 45 marked for deletion!
- 20: 30 : 46 : Object 47 marked for deletion!
- 20: 30 : 46 : Object 49 marked for deletion!
- 20: 30 : 57 : Object 0 marked for deletion!
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
- 20: 30 : 57 : GameOver set to true
+ 15: 11 : 15 : LogManager startUp()
+ 15: 11 : 15 : WorldManager startUp()
+ 15: 11 : 16 : Font accepted
+ 15: 11 : 16 : DisplayManager started
+ 15: 11 : 16 : SRM::startUp(): Successfully started.
+ 15: 11 : 16 : InputManager starting up
+ 15: 11 : 16 : Box width 80.000000 height 24.000000
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/player-left-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/player-left-spr.txt'.
+ 15: 11 : 16 : 	      Frames: 4
+ 15: 11 : 16 : 	       Width: 3
+ 15: 11 : 16 : 	      Height: 3
+ 15: 11 : 16 : 	    Slowdown: 4
+ 15: 11 : 16 : 	       Color: blue
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'playerL' loaded.
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/player-right-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/player-right-spr.txt'.
+ 15: 11 : 16 : 	      Frames: 4
+ 15: 11 : 16 : 	       Width: 3
+ 15: 11 : 16 : 	      Height: 3
+ 15: 11 : 16 : 	    Slowdown: 4
+ 15: 11 : 16 : 	       Color: blue
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'playerR' loaded.
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/enemy-left-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/enemy-left-spr.txt'.
+ 15: 11 : 16 : 	      Frames: 4
+ 15: 11 : 16 : 	       Width: 3
+ 15: 11 : 16 : 	      Height: 3
+ 15: 11 : 16 : 	    Slowdown: 4
+ 15: 11 : 16 : 	       Color: red
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'enemyL' loaded.
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/enemy-right-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/enemy-right-spr.txt'.
+ 15: 11 : 16 : 	      Frames: 4
+ 15: 11 : 16 : 	       Width: 3
+ 15: 11 : 16 : 	      Height: 3
+ 15: 11 : 16 : 	    Slowdown: 4
+ 15: 11 : 16 : 	       Color: red
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'enemyR' loaded.
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/bullet-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/bullet-spr.txt'.
+ 15: 11 : 16 : 	      Frames: 1
+ 15: 11 : 16 : 	       Width: 1
+ 15: 11 : 16 : 	      Height: 1
+ 15: 11 : 16 : 	    Slowdown: 5
+ 15: 11 : 16 : 	       Color: white
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'bullet' loaded.
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/gameover-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/gameover-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Warning! Unused HEADER lines:
+ 15: 11 : 16 : 	'transparency #'
+ 15: 11 : 16 : 	      Frames: 12
+ 15: 11 : 16 : 	       Width: 54
+ 15: 11 : 16 : 	      Height: 5
+ 15: 11 : 16 : 	    Slowdown: 15
+ 15: 11 : 16 : 	       Color: cyan
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'gameover' loaded.
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/gamestart-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/gamestart-spr.txt'.
+ 15: 11 : 16 : 	      Frames: 1
+ 15: 11 : 16 : 	       Width: 64
+ 15: 11 : 16 : 	      Height: 8
+ 15: 11 : 16 : 	    Slowdown: 15
+ 15: 11 : 16 : 	       Color: yellow
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'gamestart' loaded.
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/healthpack-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/healthpack-spr.txt'.
+ 15: 11 : 16 : 	      Frames: 2
+ 15: 11 : 16 : 	       Width: 3
+ 15: 11 : 16 : 	      Height: 2
+ 15: 11 : 16 : 	    Slowdown: 15
+ 15: 11 : 16 : 	       Color: red
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'healthpack' loaded.
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/LevelEnd.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/LevelEnd.txt'.
+ 15: 11 : 16 : 	      Frames: 1
+ 15: 11 : 16 : 	       Width: 2
+ 15: 11 : 16 : 	      Height: 2
+ 15: 11 : 16 : 	    Slowdown: 3
+ 15: 11 : 16 : 	       Color: green
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'LevelEnd' loaded.
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/one-char-wall-h-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/one-char-wall-h-spr.txt'.
+ 15: 11 : 16 : 	      Frames: 1
+ 15: 11 : 16 : 	       Width: 1
+ 15: 11 : 16 : 	      Height: 1
+ 15: 11 : 16 : 	    Slowdown: 5
+ 15: 11 : 16 : 	       Color: white
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'one char wall h' loaded.
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/one-char-wall-v-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/one-char-wall-v-spr.txt'.
+ 15: 11 : 16 : 	      Frames: 1
+ 15: 11 : 16 : 	       Width: 1
+ 15: 11 : 16 : 	      Height: 1
+ 15: 11 : 16 : 	    Slowdown: 5
+ 15: 11 : 16 : 	       Color: white
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'one char wall v' loaded.
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/container-wall-h-up-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/container-wall-h-up-spr.txt'.
+ 15: 11 : 16 : 	      Frames: 1
+ 15: 11 : 16 : 	       Width: 40
+ 15: 11 : 16 : 	      Height: 1
+ 15: 11 : 16 : 	    Slowdown: 5
+ 15: 11 : 16 : 	       Color: white
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'container wall h up' loaded.
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/container-wall-h-down-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/container-wall-h-down-spr.txt'.
+ 15: 11 : 16 : 	      Frames: 1
+ 15: 11 : 16 : 	       Width: 40
+ 15: 11 : 16 : 	      Height: 2
+ 15: 11 : 16 : 	    Slowdown: 5
+ 15: 11 : 16 : 	       Color: white
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'container wall h down' loaded.
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/container-wall-h-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/container-wall-h-spr.txt'.
+ 15: 11 : 16 : 	      Frames: 1
+ 15: 11 : 16 : 	       Width: 40
+ 15: 11 : 16 : 	      Height: 1
+ 15: 11 : 16 : 	    Slowdown: 5
+ 15: 11 : 16 : 	       Color: white
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'container wall h' loaded.
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/container-wall-v-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/container-wall-v-spr.txt'.
+ 15: 11 : 16 : 	      Frames: 1
+ 15: 11 : 16 : 	       Width: 1
+ 15: 11 : 16 : 	      Height: 12
+ 15: 11 : 16 : 	    Slowdown: 5
+ 15: 11 : 16 : 	       Color: white
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'container wall v' loaded.
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/box-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/box-spr.txt'.
+ 15: 11 : 16 : 	      Frames: 1
+ 15: 11 : 16 : 	       Width: 14
+ 15: 11 : 16 : 	      Height: 7
+ 15: 11 : 16 : 	    Slowdown: 5
+ 15: 11 : 16 : 	       Color: white
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'box' loaded.
+ 15: 11 : 16 : SRM::loadSprite(): Loading sprite 'sprites/container-barrier-wall-h-spr.txt'.
+ 15: 11 : 16 : SRM::loadSprite(): Opened file 'sprites/container-barrier-wall-h-spr.txt'.
+ 15: 11 : 16 : 	      Frames: 1
+ 15: 11 : 16 : 	       Width: 5
+ 15: 11 : 16 : 	      Height: 1
+ 15: 11 : 16 : 	    Slowdown: 5
+ 15: 11 : 16 : 	       Color: white
+ 15: 11 : 16 : SRM::loadSprite(): Sprite 'container barrier wall h' loaded.
+ 15: 11 : 17 : SRM::loadSprite(): Loading sprite 'sprites/container-barrier-wall-v-spr.txt'.
+ 15: 11 : 17 : SRM::loadSprite(): Opened file 'sprites/container-barrier-wall-v-spr.txt'.
+ 15: 11 : 17 : 	      Frames: 1
+ 15: 11 : 17 : 	       Width: 1
+ 15: 11 : 17 : 	      Height: 9
+ 15: 11 : 17 : 	    Slowdown: 5
+ 15: 11 : 17 : 	       Color: white
+ 15: 11 : 17 : SRM::loadSprite(): Sprite 'container barrier wall v' loaded.
+ 15: 11 : 17 : SRM::loadSprite(): Loading sprite 'sprites/container-wall-v8-spr.txt'.
+ 15: 11 : 17 : SRM::loadSprite(): Opened file 'sprites/container-wall-v8-spr.txt'.
+ 15: 11 : 17 : 	      Frames: 1
+ 15: 11 : 17 : 	       Width: 1
+ 15: 11 : 17 : 	      Height: 8
+ 15: 11 : 17 : 	    Slowdown: 5
+ 15: 11 : 17 : 	       Color: white
+ 15: 11 : 17 : SRM::loadSprite(): Sprite 'v8' loaded.
+ 15: 11 : 17 : SRM::loadSprite(): Loading sprite 'sprites/landmine-spr.txt'.
+ 15: 11 : 17 : SRM::loadSprite(): Opened file 'sprites/landmine-spr.txt'.
+ 15: 11 : 17 : 	      Frames: 2
+ 15: 11 : 17 : 	       Width: 7
+ 15: 11 : 17 : 	      Height: 4
+ 15: 11 : 17 : 	    Slowdown: 15
+ 15: 11 : 17 : 	       Color: red
+ 15: 11 : 17 : SRM::loadSprite(): Sprite 'landmine' loaded.
+ 15: 11 : 17 : SRM::loadSprite(): Loading sprite 'sprites/landmine-explosion-spr.txt'.
+ 15: 11 : 17 : SRM::loadSprite(): Opened file 'sprites/landmine-explosion-spr.txt'.
+ 15: 11 : 17 : SRM::loadSprite(): Warning! No 'slowdown' in header.
+ 15: 11 : 17 : 	      Frames: 8
+ 15: 11 : 17 : 	       Width: 5
+ 15: 11 : 17 : 	      Height: 3
+ 15: 11 : 17 : 	    Slowdown: 0
+ 15: 11 : 17 : 	       Color: white
+ 15: 11 : 17 : SRM::loadSprite(): Sprite 'landmine explosion' loaded.
+ 15: 11 : 17 : SRM::loadSprite(): Loading sprite 'sprites/fov-spr.txt'.
+ 15: 11 : 17 : SRM::loadSprite(): Opened file 'sprites/fov-spr.txt'.
+ 15: 11 : 17 : 	      Frames: 2
+ 15: 11 : 17 : 	       Width: 10
+ 15: 11 : 17 : 	      Height: 3
+ 15: 11 : 17 : 	    Slowdown: 4
+ 15: 11 : 17 : 	       Color: yellow
+ 15: 11 : 17 : SRM::loadSprite(): Sprite 'fov' loaded.
+ 15: 11 : 17 : SRM::loadSprite(): Loading sprite 'sprites/fov-vertical-spr.txt'.
+ 15: 11 : 17 : SRM::loadSprite(): Opened file 'sprites/fov-vertical-spr.txt'.
+ 15: 11 : 17 : 	      Frames: 2
+ 15: 11 : 17 : 	       Width: 7
+ 15: 11 : 17 : 	      Height: 4
+ 15: 11 : 17 : 	    Slowdown: 4
+ 15: 11 : 17 : 	       Color: yellow
+ 15: 11 : 17 : SRM::loadSprite(): Sprite 'fov vertical' loaded.
+ 15: 11 : 17 : SRM::loadSprite(): Loading sprite 'sprites/widebox-spr.txt'.
+ 15: 11 : 17 : SRM::loadSprite(): Opened file 'sprites/widebox-spr.txt'.
+ 15: 11 : 17 : 	      Frames: 1
+ 15: 11 : 17 : 	       Width: 34
+ 15: 11 : 17 : 	      Height: 7
+ 15: 11 : 17 : 	    Slowdown: 5
+ 15: 11 : 17 : 	       Color: white
+ 15: 11 : 17 : SRM::loadSprite(): Sprite 'widebox' loaded.
+ 15: 11 : 17 : SRM::loadSprite(): Loading sprite 'sprites/intel-spr.txt'.
+ 15: 11 : 17 : SRM::loadSprite(): Opened file 'sprites/intel-spr.txt'.
+ 15: 11 : 17 : 	      Frames: 2
+ 15: 11 : 17 : 	       Width: 5
+ 15: 11 : 17 : 	      Height: 3
+ 15: 11 : 17 : 	    Slowdown: 15
+ 15: 11 : 17 : 	       Color: green
+ 15: 11 : 17 : SRM::loadSprite(): Sprite 'intel' loaded.
+ 15: 11 : 17 : GameStart
+ 15: 11 : 17 : GameManager run()
+ 15: 11 : 18 : 3
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : Obstacle Created
+ 15: 11 : 18 : the sprite loaded
+ 15: 11 : 18 : the sprite loaded
+ 15: 11 : 18 : the sprite loaded
+ 15: 11 : 18 : the sprite loaded
+ 15: 11 : 20 : Object 6 marked for deletion!
+ 15: 11 : 20 : Object 7 marked for deletion!
+ 15: 11 : 20 : Object 8 marked for deletion!
+ 15: 11 : 20 : Object 9 marked for deletion!
+ 15: 11 : 20 : Object 10 marked for deletion!
+ 15: 11 : 20 : Object 11 marked for deletion!
+ 15: 11 : 20 : Object 12 marked for deletion!
+ 15: 11 : 20 : Object 13 marked for deletion!
+ 15: 11 : 20 : Object 14 marked for deletion!
+ 15: 11 : 20 : Object 15 marked for deletion!
+ 15: 11 : 20 : Object 16 marked for deletion!
+ 15: 11 : 20 : Object 17 marked for deletion!
+ 15: 11 : 20 : Object 18 marked for deletion!
+ 15: 11 : 20 : Object 19 marked for deletion!
+ 15: 11 : 20 : Object 20 marked for deletion!
+ 15: 11 : 20 : Object 21 marked for deletion!
+ 15: 11 : 20 : Object 22 marked for deletion!
+ 15: 11 : 20 : Object 23 marked for deletion!
+ 15: 11 : 20 : Object 24 marked for deletion!
+ 15: 11 : 20 : Object 25 marked for deletion!
+ 15: 11 : 20 : Object 26 marked for deletion!
+ 15: 11 : 20 : Object 27 marked for deletion!
+ 15: 11 : 20 : Object 28 marked for deletion!
+ 15: 11 : 20 : Object 29 marked for deletion!
+ 15: 11 : 20 : Object 30 marked for deletion!
+ 15: 11 : 20 : Object 31 marked for deletion!
+ 15: 11 : 20 : Object 32 marked for deletion!
+ 15: 11 : 20 : Object 33 marked for deletion!
+ 15: 11 : 20 : Object 34 marked for deletion!
+ 15: 11 : 20 : Object 35 marked for deletion!
+ 15: 11 : 20 : Object 36 marked for deletion!
+ 15: 11 : 20 : Object 37 marked for deletion!
+ 15: 11 : 20 : Object 38 marked for deletion!
+ 15: 11 : 20 : Object 39 marked for deletion!
+ 15: 11 : 20 : Object 40 marked for deletion!
+ 15: 11 : 20 : Object 41 marked for deletion!
+ 15: 11 : 20 : Object 42 marked for deletion!
+ 15: 11 : 20 : Object 43 marked for deletion!
+ 15: 11 : 20 : Object 44 marked for deletion!
+ 15: 11 : 20 : Object 45 marked for deletion!
+ 15: 11 : 20 : Object 46 marked for deletion!
+ 15: 11 : 20 : Object 47 marked for deletion!
+ 15: 11 : 20 : Object 48 marked for deletion!
+ 15: 11 : 20 : Object 49 marked for deletion!
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : the sprite loaded
+ 15: 11 : 20 : the sprite loaded
+ 15: 11 : 20 : the sprite loaded
+ 15: 11 : 20 : the sprite loaded
+ 15: 11 : 20 : the sprite loaded
+ 15: 11 : 20 : the sprite loaded
+ 15: 11 : 20 : Obstacle Created
+ 15: 11 : 20 : Object 124 marked for deletion!
+ 15: 11 : 20 : Lives 3 Delta 0
+ 15: 11 : 20 : Set to 4
+ 15: 11 : 20 : Object 138 marked for deletion!
+ 15: 11 : 20 : Object 43 marked for deletion!
+ 15: 11 : 20 : Object 45 marked for deletion!
+ 15: 11 : 20 : Object 47 marked for deletion!
+ 15: 11 : 20 : Object 49 marked for deletion!
+ 15: 11 : 32 : Object 139 marked for deletion!
+ 15: 11 : 32 : Object 94 marked for deletion!
+ 15: 11 : 32 : Object 137 marked for deletion!
+ 15: 11 : 32 : Object 136 marked for deletion!
+ 15: 11 : 32 : Object 135 marked for deletion!
+ 15: 11 : 32 : Object 134 marked for deletion!
+ 15: 11 : 32 : Object 133 marked for deletion!
+ 15: 11 : 32 : Object 132 marked for deletion!
+ 15: 11 : 32 : Object 131 marked for deletion!
+ 15: 11 : 32 : Object 130 marked for deletion!
+ 15: 11 : 32 : Object 129 marked for deletion!
+ 15: 11 : 32 : Object 128 marked for deletion!
+ 15: 11 : 32 : Object 127 marked for deletion!
+ 15: 11 : 32 : Object 126 marked for deletion!
+ 15: 11 : 32 : Object 125 marked for deletion!
+ 15: 11 : 32 : Object 95 marked for deletion!
+ 15: 11 : 32 : Object 123 marked for deletion!
+ 15: 11 : 32 : Object 122 marked for deletion!
+ 15: 11 : 32 : Object 121 marked for deletion!
+ 15: 11 : 32 : Object 120 marked for deletion!
+ 15: 11 : 32 : Object 119 marked for deletion!
+ 15: 11 : 32 : Object 118 marked for deletion!
+ 15: 11 : 32 : Object 117 marked for deletion!
+ 15: 11 : 32 : Object 116 marked for deletion!
+ 15: 11 : 32 : Object 115 marked for deletion!
+ 15: 11 : 32 : Object 114 marked for deletion!
+ 15: 11 : 32 : Object 113 marked for deletion!
+ 15: 11 : 32 : Object 112 marked for deletion!
+ 15: 11 : 32 : Object 111 marked for deletion!
+ 15: 11 : 32 : Object 110 marked for deletion!
+ 15: 11 : 32 : Object 109 marked for deletion!
+ 15: 11 : 32 : Object 108 marked for deletion!
+ 15: 11 : 32 : Object 107 marked for deletion!
+ 15: 11 : 32 : Object 106 marked for deletion!
+ 15: 11 : 32 : Object 105 marked for deletion!
+ 15: 11 : 32 : Object 104 marked for deletion!
+ 15: 11 : 32 : Object 103 marked for deletion!
+ 15: 11 : 32 : Object 102 marked for deletion!
+ 15: 11 : 32 : Object 101 marked for deletion!
+ 15: 11 : 32 : Object 100 marked for deletion!
+ 15: 11 : 32 : Object 99 marked for deletion!
+ 15: 11 : 32 : Object 98 marked for deletion!
+ 15: 11 : 32 : Object 97 marked for deletion!
+ 15: 11 : 32 : Object 96 marked for deletion!
+ 15: 11 : 32 : Object 50 marked for deletion!
+ 15: 11 : 32 : Object 51 marked for deletion!
+ 15: 11 : 32 : Object 52 marked for deletion!
+ 15: 11 : 32 : Object 53 marked for deletion!
+ 15: 11 : 32 : Object 54 marked for deletion!
+ 15: 11 : 32 : Object 55 marked for deletion!
+ 15: 11 : 32 : Object 56 marked for deletion!
+ 15: 11 : 32 : Object 57 marked for deletion!
+ 15: 11 : 32 : Object 58 marked for deletion!
+ 15: 11 : 32 : Object 59 marked for deletion!
+ 15: 11 : 32 : Object 60 marked for deletion!
+ 15: 11 : 32 : Object 61 marked for deletion!
+ 15: 11 : 32 : Object 62 marked for deletion!
+ 15: 11 : 32 : Object 63 marked for deletion!
+ 15: 11 : 32 : Object 64 marked for deletion!
+ 15: 11 : 32 : Object 65 marked for deletion!
+ 15: 11 : 32 : Object 66 marked for deletion!
+ 15: 11 : 32 : Object 67 marked for deletion!
+ 15: 11 : 32 : Object 68 marked for deletion!
+ 15: 11 : 32 : Object 69 marked for deletion!
+ 15: 11 : 32 : Object 70 marked for deletion!
+ 15: 11 : 32 : Object 71 marked for deletion!
+ 15: 11 : 32 : Object 72 marked for deletion!
+ 15: 11 : 32 : Object 73 marked for deletion!
+ 15: 11 : 32 : Object 74 marked for deletion!
+ 15: 11 : 32 : Object 75 marked for deletion!
+ 15: 11 : 32 : Object 76 marked for deletion!
+ 15: 11 : 32 : Object 77 marked for deletion!
+ 15: 11 : 32 : Object 78 marked for deletion!
+ 15: 11 : 32 : Object 79 marked for deletion!
+ 15: 11 : 32 : Object 80 marked for deletion!
+ 15: 11 : 32 : Object 81 marked for deletion!
+ 15: 11 : 32 : Object 82 marked for deletion!
+ 15: 11 : 32 : Object 83 marked for deletion!
+ 15: 11 : 32 : Object 84 marked for deletion!
+ 15: 11 : 32 : Object 85 marked for deletion!
+ 15: 11 : 32 : Object 86 marked for deletion!
+ 15: 11 : 32 : Object 87 marked for deletion!
+ 15: 11 : 32 : Object 88 marked for deletion!
+ 15: 11 : 32 : Object 89 marked for deletion!
+ 15: 11 : 32 : Object 90 marked for deletion!
+ 15: 11 : 32 : Object 91 marked for deletion!
+ 15: 11 : 32 : Object 92 marked for deletion!
+ 15: 11 : 32 : Object 93 marked for deletion!
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : the sprite loaded
+ 15: 11 : 32 : the sprite loaded
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : Obstacle Created
+ 15: 11 : 32 : the sprite loaded
+ 15: 11 : 32 : the sprite loaded
+ 15: 11 : 33 : Obstacle Created
+ 15: 11 : 33 : Obstacle Created
+ 15: 11 : 33 : Obstacle Created
+ 15: 11 : 33 : Obstacle Created
+ 15: 11 : 33 : the sprite loaded
+ 15: 11 : 33 : the sprite loaded
+ 15: 11 : 33 : the sprite loaded
+ 15: 11 : 33 : the sprite loaded
+ 15: 11 : 33 : the sprite loaded
+ 15: 11 : 33 : the sprite loaded
+ 15: 11 : 33 : the sprite loaded
+ 15: 11 : 33 : the sprite loaded
+ 15: 11 : 33 : the sprite loaded
+ 15: 11 : 33 : the sprite loaded
+ 15: 11 : 33 : Object -572662307 marked for deletion!
+ 15: 11 : 33 : Object -572662307 marked for deletion!
+ 15: 11 : 33 : Object -572662307 marked for deletion!
+ 15: 11 : 33 : Object -572662307 marked for deletion!
+ 15: 11 : 33 : Object -572662307 marked for deletion!
+ 15: 11 : 33 : Object -572662307 marked for deletion!
+ 15: 11 : 50 : Object 242 marked for deletion!
+ 15: 12 : 14 : Playing Sound
+ 15: 12 : 15 : Object 260 marked for deletion!
+ 15: 12 : 16 : Object 215 marked for deletion!
+ 15: 12 : 25 : Playing Sound
+ 15: 12 : 26 : Object 261 marked for deletion!
+ 15: 12 : 26 : Object 216 marked for deletion!
+ 15: 12 : 26 : Lives 3 Delta 0
+ 15: 12 : 27 : Set to 5
+ 15: 12 : 30 : Playing Sound
+ 15: 12 : 38 : Object 262 marked for deletion!
+ 15: 12 : 48 : Playing Sound
+ 15: 12 : 48 : Lives 2 Delta 1
+ 15: 12 : 48 : Set to 4
+ 15: 12 : 48 : Object 263 marked for deletion!
+ 15: 12 : 52 : Object 255 marked for deletion!
+ 15: 12 : 58 : Playing Sound
+ 15: 12 : 59 : Object 265 marked for deletion!
+ 15: 13 : 09 : Lives 1 Delta 2
+ 15: 13 : 09 : Set to 3
+ 15: 13 : 09 : Object 223 marked for deletion!
+ 15: 13 : 09 : Playing Sound
+ 15: 13 : 10 : Object 266 marked for deletion!
