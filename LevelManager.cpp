@@ -6,11 +6,12 @@
 #include "ViewObject.h"
 #include "Player.h"
 #include "Obstacle.h"
-#include "HealthPack.h"
+#include "Intel.h"
 #include "EventView.h"
 #include "LevelEnd.h"
 #include "Enemy.h"
 #include "FOV.h"
+#include "HealthPack.h"
 
 LevelManager::LevelManager() {
 	setType("LevelManager");
@@ -95,6 +96,10 @@ void LevelManager::drawBox(float x, float y) {
 	new Obstacle(df::Vector(x, y), df::YELLOW, "box");
 }
 
+void LevelManager::drawWideBox(float x, float y) {
+	new Obstacle(df::Vector(x, y), df::YELLOW, "widebox");
+}
+
 void LevelManager::drawBarrier(float x, float y) {
 	new Obstacle(df::Vector(x, y+4.5), df::YELLOW, "container barrier wall v");
 	new Obstacle(df::Vector(x+5, y + 4.5), df::YELLOW, "container barrier wall v");
@@ -166,7 +171,7 @@ void LevelManager::Level1() {
 	drawBox(55, 15);
 	drawContainer(5, 3, 120, 24);
 	p.setPosition(df::Vector(12, 22));
-	new LevelEnd(df::Vector(123, 15),df::Vector(10, 15));
+	new LevelEnd(df::Vector(123, 15),df::Vector(123, 48));
 	//new HealthPack(df::Vector(30, 5));
 	new Enemy(df::Vector(30, 21), false, horizontal);
 	new Enemy(df::Vector(93, 9), true, horizontal);
@@ -178,16 +183,34 @@ void LevelManager::Level2() {
 	//RM.loadMusic("sounds/calm-before-the-storm.wav", "calm");
 	drawContainerDown(120, 3, 120, 24);
 	drawContainerUp(120, 27, 120, 24);
-	drawBarrier(120, 3);
-	drawBarrier(120, 18);
-	drawBarrier(140, 3);
-	drawBarrier(140, 18);
-	new Enemy(df::Vector(150, 25), false, horizontal);
-	new Enemy(df::Vector(185, 25), true, horizontal);
-	new Enemy(df::Vector(150, 30), true, horizontal);
-	new Enemy(df::Vector(185, 30), false, horizontal);
-	p.setPosition(df::Vector(123, 15));
-	WM.setViewPosition(df::Vector(123, 15));
+	drawBarrier(130, 27);
+	drawBarrier(130, 42);
+	drawBarrier(130, 3);
+	drawBarrier(130, 18);
+	drawBarrier(130, 3);
+	drawBarrier(130, 18);
+	drawBarrier(145, 3);
+	drawBarrier(145, 18);
+	drawBarrier(210, 3);
+	drawBarrier(210, 18);
+	drawBarrier(225, 3);
+	drawBarrier(225, 18);
+	drawBarrier(225, 27);
+	drawBarrier(225, 42);
+	p.setPosition(df::Vector(123, 48));
+	new HealthPack(df::Vector(235, 48));
+	new Enemy(df::Vector(173, 25), false, horizontal);
+	new Enemy(df::Vector(202, 25), true, horizontal);
+	//new Enemy(df::Vector(138, 30), false , horizontal);
+	//new Enemy(df::Vector(222, 30), true, horizontal);
+	new Enemy(df::Vector(222, 34), true, horizontal);
+	new Enemy(df::Vector(222, 44), true, horizontal);
+	new Enemy(df::Vector(230, 15), true, horizontal);
+	new Enemy(df::Vector(130, 15), false, horizontal);
+	drawWideBox(181, 39);
+	new Intel(df::Vector(125, 7));
+	new Intel(df::Vector(235, 25));
+	WM.setViewPosition(df::Vector(123, 48));
 	/*int i = 0;
 	while (i < 30) {
 		if (p.getPosition()!= df::Vector(120, 15)) {
@@ -196,3 +219,8 @@ void LevelManager::Level2() {
 		i++;
 	}*/
 }
+
+
+
+//box is x 14 y 7
+//barrier is x 5 y 9

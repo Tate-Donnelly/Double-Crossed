@@ -26,7 +26,7 @@ int main() {
      
 
         GM.run();
-        GM.shutDown();
+       GM.shutDown();
     }
 	return 0;
 }
@@ -51,6 +51,8 @@ void loadResources(void) {
     RM.loadSprite("sprites/container-barrier-wall-h-spr.txt", "container barrier wall h");
     RM.loadSprite("sprites/container-barrier-wall-v-spr.txt", "container barrier wall v");
     RM.loadSprite("sprites/fov-spr.txt", "fov");
+    RM.loadSprite("sprites/widebox-spr.txt", "widebox");
+    RM.loadSprite("sprites/intel-spr.txt", "intel");
     RM.loadSound("sounds/fire.wav", "fire");
     RM.loadSound("sounds/game-over.wav", "game over");
     RM.loadMusic("sounds/chase.wav", "chase");

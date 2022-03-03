@@ -56,6 +56,8 @@ public:
 
     void drawBox(float x, float y);
 
+    void drawWideBox(float x, float y);
+
     void Level1();
     void Level2();
 };
