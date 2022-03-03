@@ -1,0 +1,22 @@
+<HEADER>
+frames 2
+width 7
+height 4
+color red
+slowdown 15
+</HEADER>
+<BODY>
+  ___  
+ /\ /\ 
+|  O  |
+ \/_\/ 
+end
+  ___  
+ /\ /\ 
+|     |
+ \/_\/ 
+end
+</BODY>
+<FOOTER>
+version 1
+</FOOTER>

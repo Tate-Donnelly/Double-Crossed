@@ -1,8 +1,10 @@
+#include <Windows.h>
 #include "GameManager.h"
 #include "WorldManager.h"
 #include "ResourceManager.h"
 #include "LogManager.h"
 #include "GameStart.h"
+#include "LevelManager.h"
 #include "Player.h"
 //function prototypes
 void loadResources(void);
@@ -26,6 +28,8 @@ int main() {
      
 
         GM.run();
+       Sleep(5000);
+       levelM.shutDown();
        GM.shutDown();
     }
 	return 0;
@@ -50,10 +54,15 @@ void loadResources(void) {
     RM.loadSprite("sprites/box-spr.txt", "box");
     RM.loadSprite("sprites/container-barrier-wall-h-spr.txt", "container barrier wall h");
     RM.loadSprite("sprites/container-barrier-wall-v-spr.txt", "container barrier wall v");
+    RM.loadSprite("sprites/container-wall-v8-spr.txt", "v8");
+    RM.loadSprite("sprites/landmine-spr.txt", "landmine");
+    RM.loadSprite("sprites/landmine-explosion-spr.txt", "landmine explosion");
     RM.loadSprite("sprites/fov-spr.txt", "fov");
+    RM.loadSprite("sprites/fov-vertical-spr.txt", "fov vertical");
     RM.loadSprite("sprites/widebox-spr.txt", "widebox");
     RM.loadSprite("sprites/intel-spr.txt", "intel");
     RM.loadSound("sounds/fire.wav", "fire");
+    RM.loadSound("sounds/explode.wav", "boom");
     RM.loadSound("sounds/game-over.wav", "game over");
     RM.loadMusic("sounds/chase.wav", "chase");
     RM.getMusic("chase")->stop();

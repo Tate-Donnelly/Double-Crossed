@@ -25,6 +25,12 @@ int Intel::eventHandler(const df::Event* p_e) {
 			if (p.getIntel() == 1) {
 				if (levelM.getLevelIndex() == 1) {
 					new LevelEnd(df::Vector(180, 15), df::Vector(10, 15));
+					p.setIntel(0);
+				}
+			}
+			if (p.getIntel() == 3) {
+				if (levelM.getLevelIndex() == 2) {
+					new LevelEnd(df::Vector(180, 39), df::Vector(10, 15));
 				}
 			}
 			p.setIntel(p.getIntel() + 1);

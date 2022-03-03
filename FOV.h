@@ -13,11 +13,12 @@ public:
 	FOV(df::Vector e_pos, Enemy* ene);
 	FOV(Enemy* ene);
 	FOV();
-	~FOV();
+	//~FOV();
 	int eventHandler(const df::Event* p_e);
 	void setObstacleCollision(bool c);
 	bool getObstacleCollision();
 	void move(float x, float y);
+	int collisionCount;
 	//float getVisionX();
 	//void setVisionX(float new_vision_x);
 	//float getVisionY();

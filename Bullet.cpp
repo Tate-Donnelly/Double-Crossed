@@ -17,7 +17,7 @@ Bullet::Bullet(df::Vector pos, int id) {
     df::Vector p(pos.getX(), pos.getY());
     setPosition(p);
     //Sets speed
-    setSpeed(1);
+    setSpeed(0.5);
 
     //Sets the ID that fired the bullet
     setFromID(id);

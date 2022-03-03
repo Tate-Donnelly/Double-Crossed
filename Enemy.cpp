@@ -24,7 +24,7 @@ Enemy::Enemy(df::Vector position, bool direction, MovementPatern mp)
 	bounce = false;
 	move_slowdown = 100;
 	move_countdown;
-	fire_slowdown = 100;
+	fire_slowdown = 20;
 	fire_countdown;
 	setPosition(position);
 	setMovement(mp);
@@ -42,6 +42,7 @@ Enemy::Enemy(df::Vector position, bool direction, MovementPatern mp)
 	d_x = 0;
 	d_y = 0;
 	myFOV = new FOV(this);
+	move();
 }
 
 Enemy::~Enemy()
@@ -54,18 +55,6 @@ int Enemy::eventHandler(const df::Event* p_e)
 	if (p_e->getType() == df::STEP_EVENT) {
 		step();
 		return 1;
-	}
-	if (p_e->getType() == df::COLLISION_EVENT) {
-		const df::EventCollision* p_collision_event = dynamic_cast <df::EventCollision const*> (p_e);
-		bool enemy = ((p_collision_event->getObject1()->getType() == "Enemy") || (p_collision_event->getObject2()->getType() == "Enemy"));
-		bool enemy2 = ((p_collision_event->getObject1()->getType() == "Enemy") && p_collision_event->getObject1() != this) || ((p_collision_event->getObject2()->getType() == "Enemy") && p_collision_event->getObject2() != this);
-		bool obstacle = ((p_collision_event->getObject1()->getType() == "Obstacle") || (p_collision_event->getObject2()->getType() == "Obstacle"));
-		if (enemy && (obstacle || enemy2)  && bounce) {
-			LM.writeLog(0, "Obstacle Found");
-			myFOV->setObstacleCollision(false);
-			facingLeft = !facingLeft;
-		}
-
 	}
 	return 0;
 
@@ -104,20 +93,21 @@ int Enemy::shoot()
 	//Fire sound
 	df::Sound* p_sound = RM.getSound("fire");
 	p_sound->play(false);
-	df::Vector v = getPosition();
-	v.setY(0);
+	df::Vector pos = p.getPosition();
+	df::Vector v(pos.getX() - getPosition().getX(), pos.getY() - getPosition().getY());
+	v.normalize();
+	v.scale(1);
+	Bullet* bullet = new Bullet(getPosition(), getId());
+	bullet->setVelocity(v);
+	return 1;
+	/*
 	if (facingLeft) {
 		v.setX(0 - v.getX());
 	}
 	else {
 		v.setX(100 - v.getX()); //figure out level boundary length to make it fire to the maximum
 	}
-	v.normalize();
-	v.scale(1);
-	Bullet* pos = new Bullet(getPosition(), getId());
-	pos->setVelocity(v);
-
-	return 1;
+	*/
 }
 
 void Enemy::step() {
@@ -201,6 +191,7 @@ void Enemy::movementHorizontal() {
 			myFOV->setPosition(df::Vector(myFOV->getPosition().getX() + 1, getPosition().getY()));
 			setSprite("enemyR");
 			facingLeft = false;
+			printf("Change directions to right");
 			myFOV->setVelocity(df::Vector(0.25, 0));
 		}
 	}
@@ -217,6 +208,7 @@ void Enemy::movementHorizontal() {
 			myFOV->setPosition(df::Vector(myFOV->getPosition().getX() - 1, getPosition().getY()));
 			setSprite("enemyL");
 			facingLeft = true;
+			printf("change dierction to left");
 			myFOV->setVelocity(df::Vector(-0.25, 0));
 		}
 	}
@@ -231,8 +223,10 @@ void Enemy::movementVertical() {
 			myFOV->setVelocity(df::Vector(0, -.15));
 		}
 		else {
-			myFOV->setVelocity(df::Vector(0, 0));
-			myFOV->setPosition(df::Vector(getPosition().getX(), getPosition().getY() - 1));
+			myFOV->setObstacleCollision(false);
+			myFOV->setPosition(df::Vector(myFOV->getPosition().getX(), getPosition().getY() + 3));
+			facingLeft = false;
+			myFOV->setVelocity(df::Vector(0, 0.15));
 		}
 	}
 	else {
@@ -244,8 +238,10 @@ void Enemy::movementVertical() {
 
 		}
 		else {
-			myFOV->setVelocity(df::Vector(0, 0));
-			myFOV->setPosition(df::Vector(getPosition().getX(), getPosition().getY() + 1));
+			myFOV->setObstacleCollision(false);
+			myFOV->setPosition(df::Vector(myFOV->getPosition().getX(), getPosition().getY() - 3));
+			facingLeft = true;
+			myFOV->setVelocity(df::Vector(0, -0.15));
 
 		}
 	}

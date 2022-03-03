@@ -25,6 +25,13 @@ Player::Player() {
 	}
 }
 
+Player::~Player() {
+	// Create GameOver object.
+	//new GameOver;
+	//WM.markForDelete(this);
+	// Mark Reticle for deletion.
+}
+
 void Player::start() {
 	Reticle* r = new Reticle;
 	setType("Player");
@@ -79,6 +86,10 @@ void Player::start() {
 	sneakAttack = false;
 }
 
+void Player::shutDown() {
+	valueReset();
+	WM.markForDelete(this);
+}
 
 Player& Player::getInstance() {
 	static Player player;
@@ -119,8 +130,10 @@ int Player::eventHandler(const df::Event* p_e) {
 		lives--;
 		delta_lives++;
 		LM.writeLog("Lives %d Delta %d", lives, delta_lives);
-		df::EventView* ev = new df::EventView("Lives", -1, true);
-		WM.onEvent(ev);
+		if (lives >= 0) {
+			df::EventView* ev = new df::EventView("Lives", -1, true);
+			WM.onEvent(ev);
+		}
 		if (lives == 0) {
 			new GameOver;
 		}
@@ -286,4 +299,9 @@ void Player::setIntel(int ic)
 int Player::getIntel()
 {
 	return intelCount;
+}
+
+int Player::getLives()
+{
+	return lives;
 }

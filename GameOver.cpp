@@ -11,12 +11,13 @@
 #include "Player.h"
 
 GameOver::GameOver() {
-    p.setPosition(df::Vector(40, 12));
+    //p.setPosition(df::Vector(40, 12));
     p.getAnimation().getSprite()->setColor(df::BLACK);
     setAltitude(3);
     setType("GameOver");
     //links to the "game over" sprite
-    if (setSprite("gameover") == 0) {
+    printf("gameOver constructor");
+;    if (setSprite("gameover") == 0) {
         time_to_live = getAnimation().getSprite()->getFrameCount() * getAnimation().getSprite()->getSlowdown();
     }
     else {
@@ -26,7 +27,9 @@ GameOver::GameOver() {
     //Sets location
     df::Vector pos(p.getPosition());
     setPosition(pos);
+    printf("inserting into levelmanager");
     levelM.insertProtected(this);
+    printf("inserted into levelmanager");
 }
 
 //Handles event
@@ -60,7 +63,7 @@ GameOver::~GameOver() {
         }
         
     }
-    new GameStart;
+    exit(0);
 }
 
 //Draws game over screen

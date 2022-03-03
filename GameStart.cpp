@@ -48,10 +48,12 @@ int GameStart::eventHandler(const df::Event* p_e) {
         df::EventKeyboard* p_keyboard_event = (df::EventKeyboard*)p_e;
         switch (p_keyboard_event->getKey()) {
         case df::Keyboard::Q:			// quit
-            if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED)
-                WM.markForDelete(this);
-                GM.setGameOver();
-            return 1;
+            if (p_keyboard_event->getKeyboardAction() == df::KEY_PRESSED) {
+                exit(0);
+                //GM.setGameOver(true);
+                //p.shutDown();
+            }
+            break;
         case df::Keyboard::SPACE: 	//begin game
             if ((p_keyboard_event->getKeyboardAction() == df::EventKeyboardAction::KEY_PRESSED) &&
                 !(getAnimation().getSprite()->getColor()==df::BLACK)) {

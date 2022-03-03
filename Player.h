@@ -11,8 +11,9 @@ class Player :
     public df::Object
     {
     private:
-        Player(df::Vector position); //private for singleton
         Player();
+        Player(df::Vector position);
+        ~Player();
         int bullets;
         int lives;
         int delta_bullets;
@@ -33,8 +34,9 @@ class Player :
         int keyboard(const df::EventKeyboard* key);
         //Mouse event
         int mouse(const df::EventMouse* mouse);
-    public:
+    public: 
         void start();
+        void shutDown();
         static Player& getInstance();
         int eventHandler(const df::Event* p_e);
         //If level is reset values are reset
@@ -44,6 +46,7 @@ class Player :
         void setActive(bool isActive=true);
         void setIntel(int ic);
         int getIntel();
+        int getLives();
     };
 #endif
 

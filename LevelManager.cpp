@@ -12,6 +12,8 @@
 #include "Enemy.h"
 #include "FOV.h"
 #include "HealthPack.h"
+#include "Landmine.h"
+#include "Reticle.h"
 
 LevelManager::LevelManager() {
 	setType("LevelManager");
@@ -70,6 +72,7 @@ int LevelManager::loadLevel(int levelID) {
 		Level2();
 		break;
 	case 2:
+		Level3();
 		break;
 	default:
 		return 1;
@@ -107,6 +110,13 @@ void LevelManager::drawBarrier(float x, float y) {
 	new Obstacle(df::Vector(x + 2.5, y+9), df::YELLOW, "container barrier wall h");
 }
 
+void LevelManager::drawEntryBarrier(float x, float y) {
+	new Obstacle(df::Vector(x, y + 4.5), df::YELLOW, "container barrier wall v");
+	new Obstacle(df::Vector(x + 5, y + 4.5), df::YELLOW, "container barrier wall v");
+	new Obstacle(df::Vector(x + 2.5, y), df::YELLOW, "container barrier wall h");
+	//new Obstacle(df::Vector(x + 2.5, y + 9), df::YELLOW, "container barrier wall h");
+}
+
 void LevelManager::drawContainer(float x, float y, int length, int height)
 {
 	for (int i = 0; i < length; i = i + 40) {
@@ -132,6 +142,7 @@ void LevelManager::drawContainerDown(float x, float y, int length, int height)
 	}
 }
 
+
 void LevelManager::drawContainerUp(float x, float y, int length, int height)
 {
 	drawContainerH(x, y);
@@ -145,6 +156,49 @@ void LevelManager::drawContainerUp(float x, float y, int length, int height)
 	}
 }
 
+
+void LevelManager::drawContainerUpLeftRight(float x, float y, int length, int height)
+{
+	drawContainerH(x, y);
+	drawContainerH(x + 80, y);
+	drawContainerH(x, y + height);
+	drawContainerH(x + 40, y + height);
+	drawContainerH(x + 80, y + height);
+	drawContainerV8(x, y);
+	drawContainerV8(x + length, y);
+	drawContainerV8(x, y + 16) ;
+	drawContainerV8(x + length, y + 16);
+}
+
+void LevelManager::drawContainerLeft(float x, float y, int length, int height)
+{
+	drawContainerH(x, y);
+	drawContainerH(x + 40, y);
+	drawContainerH(x + 80, y);
+	drawContainerH(x, y + height);
+	drawContainerH(x + 40, y + height);
+	drawContainerH(x + 80, y + height);
+	drawContainerV8(x, y);
+	drawContainerV8(x + length, y);
+	drawContainerV8(x + length, y + 8);
+	drawContainerV8(x, y + 16);
+	drawContainerV8(x + length, y + 16);
+}
+
+void LevelManager::drawContainerRight(float x, float y, int length, int height)
+{
+	drawContainerH(x, y);
+	drawContainerH(x + 40, y);
+	drawContainerH(x + 80, y);
+	drawContainerH(x, y + height);
+	drawContainerH(x + 40, y + height);
+	drawContainerH(x + 80, y + height);
+	drawContainerV8(x, y);
+	drawContainerV8(x + length, y);
+	drawContainerV8(x, y + 8);
+	drawContainerV8(x, y + 16);
+	drawContainerV8(x + length, y + 16);
+}
 void LevelManager::drawContainerH(float x, float y) {
 	new Obstacle(df::Vector(x+20, y), df::YELLOW, "container wall h");
 }
@@ -160,8 +214,12 @@ void LevelManager::drawContainerV(float x, float y) {
 	new Obstacle(df::Vector(x, y+6), df::YELLOW, "container wall v");
 }
 
+void LevelManager::drawContainerV8(float x, float y) {
+	new Obstacle(df::Vector(x, y + 4), df::YELLOW, "v8");
+}
+
 void LevelManager::Level1() {
-	RM.loadMusic("sounds/calm-before-the-storm.wav", "calm");
+	//RM.loadMusic("sounds/calm-before-the-storm.wav", "calm");
 	drawBarrier(20, 3);
 	drawBarrier(20, 18);
 	drawBarrier(100, 3);
@@ -171,12 +229,12 @@ void LevelManager::Level1() {
 	drawBox(55, 15);
 	drawContainer(5, 3, 120, 24);
 	p.setPosition(df::Vector(12, 22));
-	new LevelEnd(df::Vector(123, 15),df::Vector(123, 48));
+	new LevelEnd(df::Vector(123, 15),df::Vector(123, 19));
 	//new HealthPack(df::Vector(30, 5));
 	new Enemy(df::Vector(30, 21), false, horizontal);
 	new Enemy(df::Vector(93, 9), true, horizontal);
-	new Enemy(df::Vector(93, 24), false, vertical);
-	new Enemy(df::Vector(112, 7), true, vertical);
+	new Enemy(df::Vector(93, 15), false, vertical);
+	new Enemy(df::Vector(112, 15), false, vertical);
 }
 
 void LevelManager::Level2() {
@@ -198,7 +256,7 @@ void LevelManager::Level2() {
 	drawBarrier(225, 27);
 	drawBarrier(225, 42);
 	p.setPosition(df::Vector(123, 48));
-	new HealthPack(df::Vector(235, 48));
+	new HealthPack(df::Vector(124, 48));//df::Vector(235, 48));
 	new Enemy(df::Vector(173, 25), false, horizontal);
 	new Enemy(df::Vector(202, 25), true, horizontal);
 	//new Enemy(df::Vector(138, 30), false , horizontal);
@@ -208,17 +266,75 @@ void LevelManager::Level2() {
 	new Enemy(df::Vector(230, 15), true, horizontal);
 	new Enemy(df::Vector(130, 15), false, horizontal);
 	drawWideBox(181, 39);
-	new Intel(df::Vector(125, 7));
-	new Intel(df::Vector(235, 25));
+	new Intel(df::Vector(125, 48));
+	new Intel(df::Vector(235, 5));
 	WM.setViewPosition(df::Vector(123, 48));
-	/*int i = 0;
-	while (i < 30) {
-		if (p.getPosition()!= df::Vector(120, 15)) {
-			p.setPosition(df::Vector(120, 15));
-		}
-		i++;
-	}*/
 }
+
+void generateLandmines() {
+	new Landmine(df::Vector(130, 43));
+	new Landmine(df::Vector(230, 33));
+	new Landmine(df::Vector(125, 31));
+	new Landmine(df::Vector(186, 43));
+	new Landmine(df::Vector(208, 31));
+	new Landmine(df::Vector(194, 45));
+	new Landmine(df::Vector(217, 38));
+	new Landmine(df::Vector(228, 43));
+	new Landmine(df::Vector(140, 46));
+	new Landmine(df::Vector(150, 40));
+	new Landmine(df::Vector(170, 33));
+	new Landmine(df::Vector(160, 38));
+	new Landmine(df::Vector(165, 46));
+}
+void LevelManager::Level3() {
+	p.setPosition(df::Vector(180, 15));
+	drawContainerUpLeftRight(121, 27, 120, 24);
+	drawContainerRight(1, 27, 120, 24);
+	drawContainerLeft(241, 27, 120, 24);
+	drawContainerDown(121, 3, 120, 24); 
+	//TOP ROOM
+	drawEntryBarrier(178.5, 12);
+	new Enemy(df::Vector(152, 23), false, horizontal);
+	new Enemy(df::Vector(208, 23), true, horizontal);
+	drawBarrier(146, 18);
+	drawBarrier(131, 18);
+	drawBarrier(138.5, 3);
+	drawBarrier(226, 18);
+	drawBarrier(211, 18);
+	drawBarrier(219.5, 3);
+	new Enemy(df::Vector(222, 15), false, vertical);
+	new Enemy(df::Vector(141, 15), false, vertical);
+	new Intel(df::Vector(126, 23));
+	new HealthPack(df::Vector(236, 23));
+	//MIDDLE ROOM
+	generateLandmines();
+	//LEFT ROOM
+	drawBox(34, 31.5);
+	drawBox(89, 46.5);
+	drawBox(34, 46.5);
+	drawBox(89, 31.5);
+	new Enemy(df::Vector(51, 32), false, horizontal);
+	new Enemy(df::Vector(14, 36), false, vertical);
+	new Enemy(df::Vector(51, 47), false, horizontal);
+	new Enemy(df::Vector(108, 39), false, vertical);
+	new Intel(df::Vector(63, 39));
+	//RIGHT ROOM
+	new Enemy(df::Vector(281, 36), true, vertical);
+	new Enemy(df::Vector(291, 36), false, vertical);
+	new Enemy(df::Vector(301, 36), true, vertical);
+	new Enemy(df::Vector(311, 36), false, vertical);
+	new Enemy(df::Vector(321, 36), true, vertical);
+	new Enemy(df::Vector(331, 36), false, vertical);
+	new Intel(df::Vector(358, 39));
+	new Landmine(df::Vector(245, 35));
+	new Landmine(df::Vector(245, 43));
+	new Landmine(df::Vector(357, 35));
+	new Landmine(df::Vector(357, 43));
+
+}
+
+
+
 
 
 
