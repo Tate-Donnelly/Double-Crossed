@@ -31,7 +31,7 @@ void Player::start() {
 	setAltitude(3);
 	setSolidness(df::HARD);
 	setSprite("playerL");
-
+	setIntel(0);
 	setSpeed(.25);
 	setPosition(df::Vector(40, 12));
 
@@ -276,4 +276,14 @@ void Player::resetDeltas() {
 //True if player can move, false otherwise
 void Player::setActive(bool isActive) {
 	active = isActive;
+}
+
+void Player::setIntel(int ic)
+{
+	intelCount = ic;
+}
+
+int Player::getIntel()
+{
+	return intelCount;
 }

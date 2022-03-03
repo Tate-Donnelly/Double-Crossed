@@ -22,8 +22,11 @@ int LevelEnd::eventHandler(const df::Event* p_e) {
 		const df::EventCollision* p_collision_event = dynamic_cast <df::EventCollision const*> (p_e);
 		if (active && ((p_collision_event->getObject1()->getType() == "Player") || (p_collision_event->getObject2()->getType() == "Player"))){
 			active = false;
-			if (1 != levelM.nextLevel()) {
+			if (2 != levelM.nextLevel()) {
+				printf("moving to position x: %f, y: %f", player_pos.getX(), player_pos.getY());
 				p.setPosition(player_pos);
+				printf("%f", p.getPosition().getX());
+				printf("%f", p.getPosition().getY());
 				//p.setActive(false);
 				df::EventView ev("Level", 1, true);
 				WM.onEvent(&ev);

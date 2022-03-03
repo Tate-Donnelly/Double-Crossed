@@ -11,6 +11,8 @@ class Player :
     public df::Object
     {
     private:
+        Player(df::Vector position); //private for singleton
+        Player();
         int bullets;
         int lives;
         int delta_bullets;
@@ -21,6 +23,7 @@ class Player :
         int fire_slowdown;
         bool active;
         bool sneakAttack;
+        int intelCount;
         Object *target;
         //Moves Player
         void move(float x, float y);
@@ -31,8 +34,6 @@ class Player :
         //Mouse event
         int mouse(const df::EventMouse* mouse);
     public:
-        Player(df::Vector position);
-        Player();
         void start();
         static Player& getInstance();
         int eventHandler(const df::Event* p_e);
@@ -41,6 +42,8 @@ class Player :
         //Sets deltas to 0
         void resetDeltas();
         void setActive(bool isActive=true);
+        void setIntel(int ic);
+        int getIntel();
     };
 #endif
 
